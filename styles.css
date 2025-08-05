@@ -1,0 +1,54 @@
+/* Базовые стили для всего сайта */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+h1, h2 {
+    color: #555;
+}
+
+header, footer {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+}
+
+header {
+    display: flex; /* Делаем контейнер гибким */
+    justify-content: space-between; /* Распределяем элементы по краям */
+    align-items: center; /* Выравниваем по центру по вертикали */
+}
+
+header h1 {
+    margin: 0;
+}
+
+header ul {
+    list-style: none; /* Убираем маркеры у списка */
+    padding: 0;
+    margin: 0;
+    display: flex; /* Делаем элементы списка гибкими */
+    gap: 20px; /* Добавляем отступ между элементами */
+}
+
+header a {
+    color: white;
+    text-decoration: none; /* Убираем подчеркивание */
+}
+
+@media (max-width: 600px) {
+    header {
+        flex-direction: column; /* На маленьких экранах элементы будут в колонку */
+        text-align: center;
+    }
+
+    header ul {
+        margin-top: 10px;
+    }
+}
+
