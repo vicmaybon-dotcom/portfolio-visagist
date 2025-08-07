@@ -3,14 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Погружение в Фантазию</title>
+    <title>INTO FANTASY</title>
     <link rel="stylesheet" href="styles.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:ital,wght@0,400..700;1,400..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poiret+One&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Savate:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+
+
 </head>
 
 <body>
     <header>
-        <nav aria-label="Основная навигация">
-            <h1>Погружение в Фантазию</h1>
+	<h1 class="hero-title">FANTASY</h1>
+	<button class="nav-toggle" aria-label="Open menu">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+    </button>
+        <nav aria-label="Main navigation">
+            
             <ul>
                 <li><a href="portfolio.html">Портфолио</a></li>
                 <li><a href="services.html">Услуги</a></li>
@@ -23,26 +34,42 @@
     <main>
         <section id="hero">
             <div class="carousel">
-                <img src="/img/Rome/894173575244699782.png" alt="Римский образ с макияжем и прической">
-                <p>Что если бы вы могли стать кем угодно, пусть даже на короткое время?</p>
-                <img src="/img/The_Great_Gatsby/894239261400813359.png" alt="Образ в стиле Великого Гэтсби">
-                <p>Забудьте о повседневности. Пришло время стать тем, кем вы всегда мечтали быть.</p>
-                <img src="/img/Egipt/894167987492287447.png" alt="Визаж в египетском стиле">
-                <p>Переживите свою историю, а не просто посмотрите на неё.</p>
+                <div class="carousel-slide">
+                    <img src="img/Rome/894173575244699782.png" alt="Римский образ">
+                    <p class="carousel-text">ЧТО ЕСЛИ БЫ ВЫ МОГЛИ СТАТЬ КЕМ УГОДНО, ПУСТЬ ДАЖЕ НА КОРОТКОЕ ВРЕМЯ?</p>
+                </div>
+                <div class="carousel-slide">
+                    <img src="img/The_Great_Gatsby/894239261400813359.png" alt="Образ в стиле Гэтсби">
+                    <p class="carousel-text">КАКОЙ ОБРАЗ ВЫ БЫ ВЫБРАЛИ?</p>
+                </div>
+                <div class="carousel-slide">
+                    <img src="img/Egipt/894167987492287447.png" alt="Египетский образ">
+                    <p class="carousel-text">ПРОЖИВИТЕ СВОЮ ОСОБЕННУЮ ИСТОРИЮ, А НЕ ПРОСТО ПОЛУЧИТЕ ФОТО!</p>
+                </div>
             </div>
-            
-            <p>
-			В мире, где всё контент чаще создаётся искусственным интеллектом, мы предлагаем вам нечто настоящее.
-			Не сгенерированные образы, а живые воспоминания, которые вы сможете пересказывать друзьям всю жизнь.
-			Это не сгенерировать. Мы предлагаем то, что не способна дать ни одна нейросеть — живой опыт.
-			Ощущение себя персонажем, переживание приключения, радость от участия в необычном творческом процессе. 		
-			Вы получите не просто фотографии или видео, а реальные воспоминания, которые останутся с вами навсегда.
-			Ваши фото и видео, которые вы будете показывать друзьям и знакомым многие годы, не будут лишь результатом мастерства цифрового художника.
-			Это будет то, что вы на самом деле прочувствовали на себе. А это не только визуальная красота, но и теплота в воспоминаниях!
-			</p>
-            <a href="portfolio.html" class="button">Посмотреть наши работы</a>
-            
+            <a href="#intro-text" class="scroll-down-arrow"></a>
         </section>
+
+        <section id="intro-text">
+		<div class="intro-container">
+        <div class="intro-image-wrapper">
+            <img src="img/894663995011633060.png" alt="О нас">
+        </div>
+        <div class="intro-text-wrapper">
+            <p>
+            В мире, где контент всё чаще создаётся искусственным интеллектом, мы предлагаем вам нечто настоящее.
+            Не сгенерированные образы, а живые воспоминания, которые вы сможете пересказывать друзьям всю жизнь.
+            Это не сгенерировать. Мы предлагаем то, что не способна дать ни одна нейросеть — живой опыт.
+            Ощущение себя персонажем, переживание приключения, радость от участия в необычном творческом процессе.
+            Вы получите не просто фотографии или видео, а реальные воспоминания, которые останутся с вами навсегда.
+            Ваши фото и видео, которые вы будете показывать друзьям и знакомым многие годы, не будут лишь результатом мастерства цифрового художника.
+            Это будет то, что вы на самом деле прочувствовали на себе. А это не только визуальная красота, но и теплота в воспоминаниях!
+            </p>
+			</div>
+    </div>
+        </section>
+
+        <a href="portfolio.html" class="button">Посмотреть наши работы</a>
 
         <section id="services-intro">
             <h2>Услуги</h2>
@@ -60,7 +87,9 @@
     </main>
 
     <footer>
-        <p>© 2025 Погружение в Фантазию. Все права защищены.</p>
+        <p>© 2025 FANTASY. Все права защищены.</p>
     </footer>
+	
+	<script src="script.js"></script>
 </body>
 </html>
