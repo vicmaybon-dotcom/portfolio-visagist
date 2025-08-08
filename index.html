@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>INTO FANTASY</title>
+    <title>FANTASY</title>
     <link rel="stylesheet" href="styles.css">
 	<link rel="stylesheet" href="services.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:ital,wght@0,400..700;1,400..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poiret+One&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Savate:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
-
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link rel="icon" href="favicon.png" type="image/png">
 </head>
 
 <body>
-    <header>
+    <header id="header">
 	<h1 class="hero-title">FANTASY</h1>
 	<button class="nav-toggle" aria-label="Open menu">
         <span class="dot"></span>
@@ -102,7 +102,7 @@
                 <div class="services-content-wrapper">
                     <h3 class="services-title">ВЕЛИКИЙ<br>ГЭТСБИ</h3>    
                     <p class="services-description"> 
-                    Переживите эпоху джаза и роскоши. Яркий макияж, элегантная прическа и блеск 20-х годов — всё, чтобы вы блистали на любой вечеринке.
+                    Проживите эпоху джаза и роскоши. Яркий макияж, элегантная прическа и блеск 20-х годов — всё, чтобы вы блистали на любой вечеринке.
                     </p>
                 </div>
             </div>
@@ -193,14 +193,66 @@
 </section>
         </section>
 
-        <section id="contact">
-            <h2>Контакты</h2>
-            </section>
+<section id="contacts">
+    <div class="contacts-container">
+        <h2 class="section-title">Контакты</h2>
+        <p class="contacts-description">
+            Свяжитесь с нами, чтобы обсудить ваш образ мечты. Мы всегда рады ответить на ваши вопросы и помочь воплотить ваши идеи в жизнь.
+        </p>
+
+        <div class="contact-info">
+            <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <a href="mailto:info@yourwebsite.com">info@yourwebsite.com</a>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-phone-alt"></i>
+                <a href="tel:+1234567890">+1 (234) 567 890</a>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>ул. Примерная, 123, г. Мегаполис</span>
+            </div>
+        </div>
+
+        <form action="#" class="contact-form">
+            <div class="form-group">
+                <input type="text" id="name" name="name" placeholder="Ваше имя" required>
+            </div>
+            <div class="form-group">
+                <input type="email" id="email" name="email" placeholder="Ваш Email" required>
+            </div>
+            <div class="form-group">
+                <textarea id="message" name="message" placeholder="Ваше сообщение" required></textarea>
+            </div>
+            <button type="submit" class="submit-button">Отправить сообщение</button>
+        </form>
+		<div class="map-container">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d434929.3684252999!2d2.684422218531747!3d48.95104246576468!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sru!2ses!4v1754639285745!5m2!1sru!2ses" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+	</div>
+    </div>
+</section>
+
     </main>
 
-    <footer>
-        <p>© 2025 FANTASY. Все права защищены.</p>
-    </footer>
+<footer class="main-footer">
+    <div class="footer-container">
+        <div class="footer-info">
+            <p>
+                <a href="#header" class="logoFooter">FANTASY</a>
+                
+            </p>
+			<p>
+                &copy; 2025 Все права защищены
+            </p>
+ 	    </div>
+        <div class="social-links">
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
+        </div>
+    </div>
+</footer>
 	
 	<script src="script.js"></script>
 </body>

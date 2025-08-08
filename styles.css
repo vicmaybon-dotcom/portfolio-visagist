@@ -11,11 +11,12 @@ body {
     color: #333;
 }
 
-h1, h2, h3, h4, h5, h6 {
-    font-family: 'Playfair Display', serif;
-    font-weight: 700;
+h2, h3, h4, h5, h6 {
+    font-family: "Roboto Condensed", sans-serif;
+    font-weight: 100;
     color: #555;
     margin: 0;
+	line-height: 1.1;
 }
 
 h2 {
@@ -41,7 +42,7 @@ header {
     left: 0;
     width: 100%;
     z-index: 100;
-    padding: 20px 50px;
+    padding: 20px 20px;
     box-sizing: border-box;
     display: flex;
     justify-content: space-between; /* Распределяем элементы по краям */
@@ -66,7 +67,7 @@ h1 {
     font-family: "Poiret One", sans-serif;
     font-size: 10vw; /* Изменяем размер шрифта на адаптивный */
     font-weight: 100;
-	line-height: 0.9; /* Уменьшаем расстояние между строками */
+	line-height: 0.8; /* Уменьшаем расстояние между строками */
     color: rgba(255, 255, 255, 0.7);
     text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.8);
 	margin: 0;
@@ -88,7 +89,7 @@ header nav ul {
 header nav a {
     color: rgba(255, 255, 255, 0.8);
     text-decoration: none;
-    font-weight: 400;
+    font-weight: 100;
     font-size: 1.2em;
     border: 1px solid rgba(255, 255, 255, 0.5);
     padding: 8px 15px;
@@ -126,21 +127,22 @@ header nav a:hover {
 
 .carousel-text {
     position: absolute;
-    bottom: 10px; /* Смещаем текст вниз */
-    left: 50%;
-    transform: translateX(-50%);
+    bottom: 0;
+    left: 0;
+    right: 0;
     color: white;
     font-family: "Roboto Condensed", sans-serif;
-	font-optical-sizing: auto;
-    font-size: 3em; /* Плавное изменение размера шрифта */
+	font-size: 3em;
     text-align: center;
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
-	text-height: 0.5;
-    z-index: 0;
-    padding: 15px;
-    background: rgba(0, 0, 0, 0.3); /* Restore the semi-transparent background */
-    
-    width: 100%; /* Make the background span the full width of the text container */
+    padding: 30px 20px 60px;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 10;
+    width: auto; /* Ensure it adjusts to the container's width */
+    margin: 0; /* Remove any default margins that might be causing space */
+    box-sizing: border-box; /* Include padding in the element's total width and height */
+	line-height: 1.1; /* Вот здесь мы меняем межстрочный интервал */
+
 }
 /* Стили для кнопок-ссылок */
 .button {
@@ -327,7 +329,7 @@ footer {
     header nav a {
         color: rgba(255, 255, 255, 0.8);
         text-decoration: none;
-        font-weight: 400;
+        font-weight: 100;
         font-size: 1.2em;
         padding: 10px 15px;
         display: block;
@@ -391,11 +393,12 @@ footer {
 }
 
 .team-member h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.2em;
+    font-family: "Roboto Condensed", sans-serif;
+    font-size: 1.5em;
     color: #c7956a;
     text-transform: uppercase;
     margin-bottom: 10px;
+	line-height: 1.0;
 }
 
 .team-member p {
@@ -415,5 +418,197 @@ footer {
 @media (max-width: 768px) {
     .team-members {
         grid-template-columns: 1fr;
+    }
+}
+
+/* ================================== */
+/* Стили для секции "Контакты"        */
+/* ================================== */
+#contacts {
+    padding: 30px 0;
+    text-align: center;
+    background-color: #f4f4f4;
+	border-top: 2px solid #c7956a;
+}
+
+.contacts-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+	
+}
+
+.contacts-description {
+    font-size: 1.1em;
+    color: #666;
+    margin-bottom: 40px;
+}
+
+.contact-info {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.contact-item {
+    font-size: 1.1em;
+    color: #333;
+}
+
+.contact-item i {
+    color: #c7956a; /*##c7956a*/
+    margin-right: 10px;
+}
+
+.contact-item a {
+    color: #333;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-item a:hover {
+    color: #c7956a;
+}
+
+.contact-form .form-group {
+    margin-bottom: 20px;
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+    font-family: "Roboto Condensed", sans-serif;
+}
+
+.contact-form textarea {
+    resize: vertical;
+    min-height: 150px;
+}
+
+.submit-button {
+    background-color: #c7956a;
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 5px;
+    font-family: "Roboto Condensed", sans-serif;
+    font-size: 1.2em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+    background-color: #a67e5a;
+}
+/* This targets all text inputs and textareas */
+input[type="text"]:focus,
+input[type="email"]:focus,
+textarea:focus {
+    outline: none; /* This removes the default blue outline */
+    border-color: #c7956a; /* This changes the border color to your brand color */
+    box-shadow: 0 0 5px #c7956a; /* This adds a custom shadow for better visibility */
+}
+/* Медиазапрос для адаптивного отображения контактов */
+@media (max-width: 768px) {
+    .contact-info {
+        flex-direction: column; /* Изменяем направление на колонку */
+        gap: 20px; /* Уменьшаем расстояние между элементами */
+    }
+}
+
+/* ================================== */
+/* Стили для карты в контактах        */
+/* ================================== */
+.map-container {
+    width: 60%;
+    height: 450px;
+    overflow: hidden;
+    border: 2px solid #c7956a;
+    margin: 20px auto; /* Это центрирует контейнер по горизонтали */
+	
+}
+
+.map-container iframe {
+    width: 100%; /* Устанавливаем 100% ширины, чтобы карта занимала всю ширину контейнера */
+    height: 100%;
+    border: none;
+}
+
+
+/* ================================== */
+/* Стили для футера                   */
+/* ================================== */
+.main-footer {
+    background-color: #333;
+    color: white;
+    padding: 30px 0;
+    text-align: center;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.footer-info p {
+    margin: 0;
+    font-size: 0.9em;
+	
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+}
+
+.social-links a {
+    color: white;
+    font-size: 1.5em;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: #c7956a; /* Используем наш фирменный цвет при наведении */
+}
+
+.logoFooter {
+    font-family: "Poiret One", sans-serif;
+    font-size: 2em; /* Вы можете изменить размер шрифта по желанию */
+    font-weight: 100;
+    color: #c7956a;
+    text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.8);
+	padding: 0 30px;
+	text-decoration: none; /* Убирает подчеркивание */
+    transition: color 0.3s ease; /* Добавляем плавный переход цвета */
+} 
+
+.logoFooter:hover {
+    color: white; /* Цвет при наведении */
+}
+
+/* Медиазапрос для футера */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .footer-info {
+        display: flex;
+        flex-direction: column; /* Элементы внутри footer-info выстраиваются в колонку */
+        gap: 5px; /* Небольшой отступ между лого и копирайтом */
+    }
+    .footer-info p {
+        margin: 0;
     }
 }
