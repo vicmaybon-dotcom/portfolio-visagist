@@ -1,10 +1,16 @@
 document.addEventListener('DOMContentLoaded', () => {
+
+    /* ================================== */
+    /* 1. Код для карусели на первом экране */
+    /* ================================== */
     const slides = document.querySelectorAll('.carousel-slide');
     let currentSlide = 0;
 
     function showSlide(n) {
         slides.forEach(slide => slide.classList.remove('active'));
-        slides[n].classList.add('active');
+        if (slides[n]) {
+            slides[n].classList.add('active');
+        }
     }
 
     function nextSlide() {
@@ -12,68 +18,119 @@ document.addEventListener('DOMContentLoaded', () => {
         showSlide(currentSlide);
     }
 
-    // Показываем первый слайд при загрузке
-    showSlide(currentSlide);
-
-    // Автоматическая смена слайдов каждые 5 секунд
-    setInterval(nextSlide, 5000);
-	
-	// Код для мобильного меню
-    const navToggle = document.querySelector('.nav-toggle');
-    const mainNav = document.querySelector('header nav');
-
-    if (navToggle && mainNav) {
-        navToggle.addEventListener('click', () => {
-            mainNav.classList.toggle('is-open');
-        });
-    }
-	
-	// Код для слайдера услуг
-    const slider = document.querySelector('.services-list');
-    const prevArrow = document.querySelector('.prev-arrow');
-    const nextArrow = document.querySelector('.next-arrow');
-    const dotsContainer = document.querySelector('.slider-dots');
-    const cards = document.querySelectorAll('.service-card');
-
-    let currentIndex = 0;
-    const totalCards = cards.length;
-
-    // Создаем точки навигации
-    for (let i = 0; i < totalCards; i++) {
-        const dot = document.createElement('div');
-        dot.classList.add('slider-dot');
-        if (i === 0) dot.classList.add('active');
-        dotsContainer.appendChild(dot);
-        dot.addEventListener('click', () => {
-            goToSlide(i);
-        });
+    if (slides.length > 0) {
+        showSlide(currentSlide);
+        setInterval(nextSlide, 5000);
     }
 
-    const dots = document.querySelectorAll('.slider-dot');
+    /* ================================== */
+    /* 2. Код для мобильного меню (бургер) */
+    /* ================================== */
+    // Мы ищем бургеры и меню в обоих хедерах
+    const mainHeaderNavToggle = document.querySelector('#header .nav-toggle');
+    const mainHeaderNav = document.querySelector('#header nav');
 
-    function updateDots() {
-        dots.forEach(dot => dot.classList.remove('active'));
-        dots[currentIndex].classList.add('active');
-    }
+    const stickyHeaderNavToggle = document.querySelector('#sticky-header .nav-toggle');
+    const stickyHeaderNav = document.querySelector('#sticky-header nav');
 
-    function goToSlide(index) {
-        if (index < 0) {
-            currentIndex = totalCards - 1;
-        } else if (index >= totalCards) {
-            currentIndex = 0;
-        } else {
-            currentIndex = index;
+    // Функция для переключения меню
+    function setupNavToggle(toggleButton, navMenu) {
+        if (toggleButton && navMenu) {
+            toggleButton.addEventListener('click', () => {
+                navMenu.classList.toggle('is-open');
+            });
+
+            document.addEventListener('click', (event) => {
+                const isClickInsideNav = navMenu.contains(event.target);
+                const isClickOnToggle = toggleButton.contains(event.target);
+
+                if (!isClickInsideNav && !isClickOnToggle && navMenu.classList.contains('is-open')) {
+                    navMenu.classList.remove('is-open');
+                }
+            });
         }
-        const offset = -currentIndex * 100;
-        slider.style.transform = `translateX(${offset}%)`;
-        updateDots();
     }
 
-    prevArrow.addEventListener('click', () => {
-        goToSlide(currentIndex - 1);
-    });
+    // Применяем функцию для обоих меню
+    setupNavToggle(mainHeaderNavToggle, mainHeaderNav);
+    setupNavToggle(stickyHeaderNavToggle, stickyHeaderNav);
 
-    nextArrow.addEventListener('click', () => {
-        goToSlide(currentIndex + 1);
-    });
+    /* ================================== */
+    /* 3. Код для слайдера услуг */
+    /* ================================== */
+    const servicesSlider = document.querySelector('.services-list');
+    const servicesPrevArrow = document.querySelector('.prev-arrow');
+    const servicesNextArrow = document.querySelector('.next-arrow');
+    const dotsContainer = document.querySelector('.slider-dots');
+    const serviceCards = document.querySelectorAll('.service-card');
+
+    let servicesCurrentIndex = 0;
+    const servicesTotalCards = serviceCards.length;
+
+    if (servicesSlider && dotsContainer && serviceCards.length > 0) {
+        // Создаем точки навигации
+        for (let i = 0; i < servicesTotalCards; i++) {
+            const dot = document.createElement('div');
+            dot.classList.add('slider-dot');
+            if (i === 0) dot.classList.add('active');
+            dotsContainer.appendChild(dot);
+            dot.addEventListener('click', () => {
+                goToServiceSlide(i);
+            });
+        }
+
+        const dots = document.querySelectorAll('.slider-dot');
+
+        function updateServiceDots() {
+            dots.forEach(dot => dot.classList.remove('active'));
+            if (dots[servicesCurrentIndex]) {
+                dots[servicesCurrentIndex].classList.add('active');
+            }
+        }
+
+        function goToServiceSlide(index) {
+            if (index < 0) {
+                servicesCurrentIndex = servicesTotalCards - 1;
+            } else if (index >= servicesTotalCards) {
+                servicesCurrentIndex = 0;
+            } else {
+                servicesCurrentIndex = index;
+            }
+            const offset = -servicesCurrentIndex * 100;
+            servicesSlider.style.transform = `translateX(${offset}%)`;
+            updateServiceDots();
+        }
+
+        if (servicesPrevArrow) {
+            servicesPrevArrow.addEventListener('click', () => {
+                goToServiceSlide(servicesCurrentIndex - 1);
+            });
+        }
+
+        if (servicesNextArrow) {
+            servicesNextArrow.addEventListener('click', () => {
+                goToServiceSlide(servicesCurrentIndex + 1);
+            });
+        }
+    }
+
+    /* ================================== */
+    /* 4. Код для прилипающего хедера */
+    /* ================================== */
+    const heroSection = document.getElementById('hero');
+    const stickyHeader = document.getElementById('sticky-header');
+
+    if (heroSection && stickyHeader) {
+        const scrollPoint = heroSection.offsetHeight;
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset >= scrollPoint) {
+                stickyHeader.classList.add('visible');
+            } else {
+                stickyHeader.classList.remove('visible');
+            }
+        });
+    } else {
+        console.error('Не найдены элементы для прилипающего хедера: #hero или #sticky-header.');
+    }
 });

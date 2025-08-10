@@ -1,0 +1,21 @@
+.active-link a {
+	/*display: block;
+	
+    color: white;*/
+    background-color: rgba(255, 255, 255, 0.3);
+    
+}
+
+.services {
+	font-size: 2.5em;
+    color: white;
+	font-weight: 400;
+    background-color: #c7956a; 
+}
+
+.intro-text-wrapper {
+    /* ... другие стили для контейнера ... */
+    text-align: left; /* Это выровняет весь текст (и h3, и p) по левому краю */
+}
+
+
