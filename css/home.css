@@ -1,0 +1,86 @@
+/* О нас */
+#intro-text {
+    padding: 1.5rem;
+    background-color: #f9f9f9;
+    text-align: left;
+}
+
+.intro-container {
+    display: grid;
+    max-width: 1200px;
+    margin: 0 auto;
+    grid-template-columns: minmax(220px, 44%) 1fr;
+    gap: 1.5rem;
+    border: 1px solid #ddd;
+    padding: 30px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    align-items: center;
+	/*background-color: green;ТЕСТОВЫЙ ЦВЕТ*/
+}
+
+.intro-image-wrapper {
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.intro-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: 2px solid #ddd;
+}
+
+.intro-text-wrapper {
+    font-size: 1.35rem;
+    line-height: 1.4;
+    width: 100%;
+	justify-content: center;
+	/*background-color: yellow;/*ТЕСТОВЫЙ ЦВЕТ*/
+}
+
+/* Команда */
+#about {
+    padding: 0;
+    text-align: center;
+	justify-content: center;
+}
+
+.about-container {
+    max-width: 1200px;
+	
+    margin: 0 auto;
+    padding: 20px;
+    background-image: linear-gradient(to left, #f2f2f2, #ffffff);
+}
+
+.team {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    margin-top: 20px;
+	font-size: 1.4em;
+    color: #666;
+	line-height: 1.2;
+	
+}
+.team h3 {
+    
+	color: #c7956a;
+}
+.team-member {
+	display: flex;
+    flex-direction: column; /* Расположить элементы вертикально */
+    align-items: center;    /* Центрировать горизонтально */
+    text-align: center;     /* Чтобы текст тоже был по центру */
+}
+
+.team-member img {
+	
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50%;
+
+}

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Admin DEV | FANTASY</title>
+  <link rel="stylesheet" href="css/office.css?v=1" />
+</head>
+<body class="admin-dev">
+  <header class="dev-header">
+    <strong>Админка (DEV)</strong>
+    <span class="muted">|</span>
+    <span class="muted">API key:</span>
+    <input id="admKey" placeholder="x-admin-key" />
+    <button class="ok" id="reload">Обновить JSON</button>
+    <a class="muted" href="/api/docs" target="_blank" style="margin-left:auto">Swagger</a>
+  </header>
+
+  <main class="dev-main">
+    <aside class="dev-aside">
+      <div class="row">
+        <button id="goRoot">/</button>
+        <div class="crumbs" id="crumbs"></div>
+      </div>
+
+      <div class="row">
+        <input id="newFolderName" placeholder="Название папки" />
+        <button class="ok" id="createFolder">Создать папку</button>
+      </div>
+
+      <div class="row">
+        <input type="file" id="uploadFile" />
+        <button class="ok" id="uploadBtn">Загрузить</button>
+      </div>
+
+      <hr />
+
+      <div class="row">
+        <input id="oldName" placeholder="Старое имя" />
+        <input id="newName" placeholder="Новое имя" />
+      </div>
+      <div class="row">
+        <select id="renameType">
+          <option value="file">Файл</option>
+          <option value="folder">Папка</option>
+        </select>
+        <button class="ok" id="renameBtn">Переименовать</button>
+      </div>
+
+      <div class="row">
+        <select id="deleteType">
+          <option value="file">Файл</option>
+          <option value="folder">Папка</option>
+        </select>
+        <input id="deleteName" placeholder="Имя для удаления" />
+        <button class="ok" id="deleteBtn">Удалить</button>
+      </div>
+    </aside>
+
+    <section class="dev-section">
+      <h3>Содержимое: <span id="currentPath">/</span></h3>
+      <div id="listing"></div>
+    </section>
+  </main>
+
+  <script src="js/admin-dev.js"></script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+@media (max-width: 1080px) {
+    .carousel-text { font-size: 2.5em; }
+    .intro-container { grid-template-columns: 1fr; text-align: center; }
+    .services-list { grid-template-columns: repeat(2, 1fr); }
+    .team { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+    .carousel-text { font-size: 2em; }
+    .services-list, .team { grid-template-columns: 1fr; }
+    .contact-info { flex-direction: column; }
+    .footer-container { flex-direction: column; gap: 20px; }
+}

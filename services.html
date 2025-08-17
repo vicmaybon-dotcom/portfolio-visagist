@@ -2,11 +2,18 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <title>Услуги - FANTASY</title>
-    <link rel="stylesheet" href="css/main.css">
-	<link rel="stylesheet" href="css/services.css">
-	
+
+<link rel="stylesheet" href="css/globals.css?v=1">		
+<link rel="stylesheet" href="css/base.css?v=1">
+<link rel="stylesheet" href="css/header.css?v=1">
+<link rel="stylesheet" href="css/carousel-services.css?v=1">
+<link rel="stylesheet" href="css/home.css?v=1">
+<link rel="stylesheet" href="css/contacts.css?v=1">
+<link rel="stylesheet" href="css/footer.css?v=1">
+<link rel="stylesheet" href="css/responsive.css?v=1">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:ital,wght@0,400..700;1,400..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poiret+One&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Savate:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
@@ -14,7 +21,7 @@
 <link rel="icon" href="favicon.png" type="image/png">
 </head>
 
-<body>
+<body class="hero-page">
     <header id="header">
 	<h1 class="hero-title">FANTASY</h1>
 	<button class="nav-toggle" aria-label="Open menu">
@@ -24,7 +31,7 @@
     </button>
         <nav aria-label="Main navigation">
             
-            <ul>
+            <ul class="menu-main-horizontal">
 				<li><a href="index.html">Главная</a></li>
                 <li><a href="portfolio.html">Портфолио</a></li>
                 <li class="active-link"><a href="services.html">Услуги</a></li>
@@ -38,19 +45,19 @@
         <section id="hero">
             <div class="carousel">
                 <div class="carousel-slide">
-                    <img src="img/China/894160389695119563.png" alt="Визаж в стиле Древнего Китая">
+                    <img src="img/China/894160389695119563.jpg" alt="Визаж в стиле Древнего Китая">
                 </div>
                 <div class="carousel-slide">
-                    <img src="img/China/894173652554111883.png" alt="Визаж в стиле Древнего Китая">
+                    <img src="img/China/894173652554111883.jpg" alt="Визаж в стиле Древнего Китая">
                 </div>
                 <div class="carousel-slide">
-                    <img src="img/China/894161429077223673.png" alt="Визаж в стиле Древнего Китая">
+                    <img src="img/China/894161429077223673.jpg" alt="Визаж в стиле Древнего Китая">
 				</div>
             </div>
             <a href="#intro-text" class="scroll-down-arrow"></a>
         </section>
 
-<div id="sticky-header">
+<div id="sticky-header" data-trigger="hero" data-trigger-position="bottom">
             <h1 class="hero-title">FANTASY</h1>
             <button class="nav-toggle" aria-label="Open menu">
                 <span class="dot"></span>
@@ -58,10 +65,10 @@
                 <span class="dot"></span>
             </button>
             <nav aria-label="Main navigation">
-                <ul>
+                <ul class="menu-sticky-horizontal">
 					<li><a href="index.html">Главная</a></li>
                     <li><a href="portfolio.html">Портфолио</a></li>
-                    <li><a href="services.html">Услуги</a></li>
+                    <li class="active-link"><a href="services.html">Услуги</a></li>
                     <li><a href="index.html#about">О нас</a></li>
                     <li><a href="#contacts">Контакты</a></li>
                 </ul>
@@ -76,7 +83,7 @@
 	<div class="intro-container">
 	
         <div class="intro-image-wrapper">
-            <img src="./img/Rome/894191170652011989.png" alt="Образ эпохи Эдо">
+            <img src="./img/Rome/894191170652011989.jpg" alt="Образ эпохи Эдо">
         </div>
         <div class="intro-text-wrapper">
 		<h3 class="services-title">Широкий спектр услуг по макияжу</h3>
@@ -87,7 +94,7 @@
 		
 		
 		<div class="intro-image-wrapper">
-            <img src="./img/Edo/894259050462582343.png" alt="Образ эпохи Эдо">
+            <img src="./img/Edo/894259050462582343.jpg" alt="Образ эпохи Эдо">
         </div>
         <div class="intro-text-wrapper">
 		<h3 class="services-title">Путешествие во времени</h3>
@@ -99,7 +106,7 @@
         
 		
 		<div class="intro-image-wrapper">
-            <img src="img/Rococo/894241430359308597.png" alt="Образ эпохи Rococo">
+            <img src="img/Rococo/894241430359308597.jpg" alt="Образ эпохи Rococo">
         </div>
         <div class="intro-text-wrapper">
 		<h3 class="services-title">Твой фильм, твоя роль</h3>
@@ -111,7 +118,7 @@
 	
 		
 		<div class="intro-image-wrapper">
-            <img src="img/wedding/895397147002857953.png" alt="Торжества">
+            <img src="img/wedding/895397147002857953.jpg" alt="Торжества">
         </div>
         <div class="intro-text-wrapper">
 		<h3 class="services-title">Событие, которое войдёт в историю</h3>
@@ -121,13 +128,6 @@
 		
     </div>
 </section>
-		
-		<!-- IMAGES HERE 
-		 <img src=">
-            <img src="./img/Rococo/894234047310489035.png" alt="Визаж в стиле Рококо">
-            <img src="./img/Rococo/894242213117093689.png" alt="Парик и макияж в стиле Рококо">
-       
-	  ------------------------------------------------------------------------->
 		
 <section id="portfolio-link">
     <div class="portfolio-container">
@@ -199,6 +199,8 @@
     </div>
 </footer>
 	
-	<script src="script.js"></script>
+	<script src="js/header.js"></script>
+	<script src="js/script.js"></script>
+	<!-- <script src="js/sticky-header.js"></script> -->
 </body>
 </html>

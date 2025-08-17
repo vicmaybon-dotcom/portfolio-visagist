@@ -1,0 +1,213 @@
+/* ===== Портфолио ===== */
+.portfolio-main {
+  background-color: #fff;
+  color: #000;
+  padding-top: 120px; /* с учётом липкого хедера */
+}
+
+.portfolio-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.portfolio-breadcrumbs {
+  margin: 15px 0 25px;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.portfolio-breadcrumbs a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.portfolio-breadcrumbs a:hover {
+  text-decoration: underline;
+}
+
+/* Список подпапок */
+.portfolio-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.portfolio-list .portfolio-item-link {
+  padding: 12px 18px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background: #f7f7f7;
+  text-decoration: none;
+  color: #000;
+  transition: background 0.3s;
+}
+
+.portfolio-list .portfolio-item-link:hover {
+  background: #eaeaea;
+}
+
+/* Галерея */
+.portfolio-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.portfolio-gallery img,
+.portfolio-gallery video {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+.portfolio-video {
+  max-width: 300px;
+}
+
+/* STAFF ONLY */
+.staff-only-btn {
+  padding: 8px 15px;
+  background: #333;
+  color: #fff;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 0.85rem;
+  transition: background 0.3s;
+}
+
+.staff-only-btn:hover {
+  background: #555;
+}
+
+/* ===== Категории: сетка карточек ===== */
+#content .category-list{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+  gap:16px;
+  margin-top:24px;
+}
+
+/* Карточка */
+.category-card{
+  position:relative;
+  display:block;
+  height:0;
+  padding-bottom:66%;            /* Соотношение 3:2 */
+  border-radius:16px;
+  overflow:hidden;
+  text-decoration:none;
+  background:#f3f3f3;
+  box-shadow:0 1px 6px rgba(0,0,0,.08);
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+.category-card:hover{
+  transform:translateY(-2px);
+  box-shadow:0 6px 18px rgba(0,0,0,.12);
+}
+
+/* Слой с изображением */
+.category-card .card-image{
+  position:absolute; inset:0;
+  background-size:cover;
+  background-position:center;
+  filter:brightness(.88);
+  transition:transform .35s ease, filter .35s ease;
+}
+.category-card:hover .card-image{
+  transform:scale(1.05);
+  filter:brightness(.98);
+}
+
+/* Заголовок поверх картинки */
+.category-card .card-title{
+  position:absolute; left:0; right:0; bottom:0;
+  padding:12px 14px;
+  font:600 16px/1.2 "Roboto Condensed",sans-serif;
+  color:#fff;
+  background:linear-gradient(
+    180deg,
+    rgba(0,0,0,0) 0%,
+    rgba(0,0,0,.45) 60%,
+    rgba(0,0,0,.65) 100%
+  );
+}
+
+/* ===== Галерея внутри категории ===== */
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:12px;
+  margin-top:20px;
+}
+.gallery img,
+.gallery video{
+  width:100%; height:auto; display:block;
+  border-radius:12px;
+  box-shadow:0 1px 6px rgba(0,0,0,.06);
+}
+
+/* Подстраховка, если где-то остался старый класс */
+.portfolio-grid{ display:block; }
+.category-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  transition: transform 0.3s ease;
+}
+
+.category-card:hover {
+  transform: translateY(-5px);
+}
+
+.card-image {
+  width: 100%;
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  filter: brightness(0.7); /* затемнение по умолчанию */
+  transition: filter 0.3s ease;
+}
+
+.category-card:hover .card-image {
+  filter: brightness(1); /* убираем затемнение при наведении */
+}
+
+.card-title {
+  text-align: center;
+  font-size: 1.2rem;
+  padding: 10px;
+  background: #fff;
+}
+.card-image {
+  width: 100%;
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  filter: brightness(0.7);
+  transition: filter 0.3s ease;
+}
+
+.category-card:hover .card-image {
+  filter: brightness(1);
+}
+.card-image {
+  background-size: cover;
+  background-position: center;
+  height: 200px;
+  position: relative;
+  transition: filter 0.3s ease;
+}
+
+.card-image.darken {
+  filter: brightness(0.6);
+}
+
+.category-card:hover .card-image.darken {
+  filter: brightness(1);
+}

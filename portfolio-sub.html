@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Портфолио | FANTASY</title>
+	
+<link rel="stylesheet" href="css/globals.css?v=1">	
+	<link rel="stylesheet" href="css/base.css?v=1">
+	<link rel="stylesheet" href="css/header.css?v=1">
+	<link rel="stylesheet" href="css/portfolio.css?v=1"> <!-- уникальные стили для портфолио -->
+<link rel="stylesheet" href="css/contacts.css?v=1">
+<link rel="stylesheet" href="css/footer.css?v=1">
+<link rel="stylesheet" href="css/responsive.css?v=1">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+	
+	<link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:ital,wght@0,400..700;1,400..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poiret+One&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Savate:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+	<link rel="icon" href="favicon.png" type="image/png">
+
+    
+</head>
+
+<body class="static-page">
+
+<!-- ====== HEADER ====== -->
+<header id="header">
+	<h1 class="hero-title">FANTASY</h1>
+	<button class="nav-toggle" aria-label="Open menu">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+    </button>
+        <nav aria-label="Main navigation">
+            
+            <ul>
+			    <li><a href="index.html">Главная</a></li>
+                <li><a href="portfolio.html"  class="active-link">Портфолио</a></li>
+                <li><a href="services.html">Услуги</a></li>
+                <li><a href="#about">О нас</a></li>
+                <li><a href="#contacts">Контакты</a></li>
+            </ul>
+        </nav>
+    </header>
+
+<!-- ====== MAIN CONTENT ====== -->
+<main class="portfolio-section">
+
+<div id="sticky-header" data-trigger="content" data-trigger-position="top">
+            <h1 class="hero-title">FANTASY</h1>
+            <button class="nav-toggle" aria-label="Open menu">
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </button>
+            <nav aria-label="Main navigation">
+                <ul>
+					<li><a href="index.html">Главная</a></li>
+                    <li><a href="portfolio.html">Портфолио</a></li>
+                    <li><a href="services.html">Услуги</a></li>
+                    <li><a href="#about">О нас</a></li>
+                    <li><a href="#contacts">Контакты</a></li>
+                </ul>
+            </nav>
+</div>
+  <!-- Заголовок страницы -->
+  <div id="portfolio-container" class="portfolio-container">
+<h2 id="pageTitle"></h2>
+
+<!-- Хлебные крошки -->
+<div class="breadcrumbs" id="breadcrumbs"></div>
+<section>
+<!-- Контент подкатегорий / галереи -->
+<div id="content" class="content"></div>
+</section>
+</div>
+
+<!-- ====== CONTACTS ====== -->
+<section id="contacts">
+    <div class="contacts-container">
+        <h2 class="section-title">Контакты</h2>
+        <p class="contacts-description">
+            Свяжитесь с нами, чтобы обсудить ваш образ мечты. Мы всегда рады ответить на ваши вопросы и помочь воплотить ваши идеи в жизнь.
+        </p>
+
+        <div class="contact-info">
+            <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <a href="mailto:info@yourwebsite.com">info@yourwebsite.com</a>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-phone-alt"></i>
+                <a href="tel:+1234567890">+1 (234) 567 890</a>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>ул. Примерная, 123, г. Мегаполис</span>
+            </div>
+        </div>
+
+        <form action="#" class="contact-form">
+            <div class="form-group">
+                <input type="text" id="name" name="name" placeholder="Ваше имя" required>
+            </div>
+            <div class="form-group">
+                <input type="email" id="email" name="email" placeholder="Ваш Email" required>
+            </div>
+            <div class="form-group">
+                <textarea id="message" name="message" placeholder="Ваше сообщение" required></textarea>
+            </div>
+            <button type="submit" class="submit-button">Отправить сообщение</button>
+        </form>
+		<div class="map-container">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d434929.3684252999!2d2.684422218531747!3d48.95104246576468!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sru!2ses!4v1754639285745!5m2!1sru!2ses" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+	</div>
+    </div>
+</section>
+</main>
+
+<!-- ====== FOOTER ====== -->
+<footer class="main-footer">
+    <div class="footer-container">
+        <div class="footer-info">
+            <a href="index.html" class="logoFooter">FANTASY</a>
+            <p>© 2025 Все права защищены</p>
+        </div>
+		
+		<div class="social-links">
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
+			</div>
+			<button  class="admin" ><a href="office.html" aria-label="admin"><i>STAFF ONLY</i></a>
+        </button>
+        
+    </div>
+</footer>
+
+<script src="js/header.js"></script>
+<script src="js/script.js"></script>
+
+<script src="js/portfolio-sub.js" defer></script>
+
+
+</body>
+</html>

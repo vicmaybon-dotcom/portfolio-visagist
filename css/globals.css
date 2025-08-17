@@ -1,0 +1,8 @@
+/* === Global reset / базовые правила (подключаются ОДИН РАЗ) === */
+*, *::before, *::after { box-sizing: border-box; }
+html { font-size: 100%; }                /* 1rem = 16px по умолчанию */
+body { -webkit-text-size-adjust: 100%; } /* запрет авто-масштаба текста на iOS/Chrome Android */
+
+/* Рекомендую, но не обязательно */
+img, picture, video, canvas, svg { display: block; max-width: 100%; }
+:where(h1, h2, h3, h4, h5, h6, p, figure) { margin: 0; }  /* убираем дефолтные отступы */
