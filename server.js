@@ -181,24 +181,82 @@ app.post('/api/rebuild', requireKey, async (req, res) => {
   }
 });
 
-// === Swagger ===
+/ === Swagger ===
 const swaggerUi = require('swagger-ui-express');
 const swaggerDoc = {
   openapi: '3.0.0',
   info: { title: 'Portfolio Admin API', version: '1.0.0' },
+  servers: [
+    { url: process.env.BASE_URL || 'http://localhost:3000' }
+  ],
   paths: {
-    '/api/tree': { get: { summary: 'Список папок и файлов' } },
-    '/api/mkdir': { post: { summary: 'Создать папку' } },
-    '/api/upload': { post: { summary: 'Загрузить файл' } },
-    '/api/rename': { post: { summary: 'Переименовать файл/папку' } },
-    '/api/delete': { post: { summary: 'Удалить файл/папку' } },
-    '/api/rebuild': { post: { summary: 'Пересобрать portfolio.json' } },
+    '/api/tree': {
+      get: {
+        summary: 'Список папок и файлов',
+        responses: {
+          200: {
+            description: 'JSON со структурой папок/файлов',
+            content: {
+              'application/json': {
+                schema: { type: 'object' }
+              }
+            }
+          }
+        }
+      }
+    },
+    '/api/mkdir': {
+      post: {
+        summary: 'Создать папку',
+        requestBody: {
+          required: true,
+          content: {
+            'application/json': {
+              schema: {
+                type: 'object',
+                properties: {
+                  path: { type: 'string', example: 'new_folder' }
+                }
+              }
+            }
+          }
+        },
+        responses: { 200: { description: 'Папка создана' } }
+      }
+    },
+    '/api/upload': {
+      post: {
+        summary: 'Загрузить файл',
+        responses: { 200: { description: 'Файл загружен' } }
+      }
+    },
+    '/api/rename': {
+      post: {
+        summary: 'Переименовать файл/папку',
+        responses: { 200: { description: 'Переименовано' } }
+      }
+    },
+    '/api/delete': {
+      post: {
+        summary: 'Удалить файл/папку',
+        responses: { 200: { description: 'Удалено' } }
+      }
+    },
+    '/api/rebuild': {
+      post: {
+        summary: 'Пересобрать portfolio.json',
+        responses: { 200: { description: 'Файл пересобран' } }
+      }
+    }
   },
   components: {
-    securitySchemes: { AdminKey: { type: 'apiKey', in: 'header', name: 'x-admin-key' } }
+    securitySchemes: {
+      AdminKey: { type: 'apiKey', in: 'header', name: 'x-admin-key' }
+    }
   },
   security: [{ AdminKey: [] }]
 };
+
 
 app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(swaggerDoc));
 
