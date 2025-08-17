@@ -11,11 +11,13 @@ app.use(cors());
 app.use(express.json());
 
 // === CONFIG ===
-const PUBLIC_DIR    = path.join(__dirname);
-const PORTFOLIO_DIR = path.join(__dirname, 'img', '1_PORTFOLIO');
+const PUBLIC_DIR    = path.join(__dirname); // сайт (html, css, js)
+const UPLOADS_DIR   = path.join(__dirname, 'uploads');
+const PORTFOLIO_DIR = path.join(UPLOADS_DIR, '1_PORTFOLIO');
 const DATA_DIR      = path.join(__dirname, 'data');
 const JSON_FILE     = path.join(DATA_DIR, 'portfolio.json');
 
+// создаём папки, если их нет
 if (!fs.existsSync(PORTFOLIO_DIR)) fs.mkdirSync(PORTFOLIO_DIR, { recursive: true });
 if (!fs.existsSync(DATA_DIR)) fs.mkdirSync(DATA_DIR, { recursive: true });
 
@@ -29,14 +31,14 @@ function requireKey(req, res, next) {
 }
 
 // === STATIC ===
-// Раздаём HTML, CSS, JS (корень проекта)
+// Раздаём сайт (HTML, CSS, JS)
 app.use(express.static(PUBLIC_DIR));
 
-// Раздаём портфолио (картинки)
-app.use('/img', express.static(path.join(__dirname, 'img')));
+// Раздаём папку uploads (все медиа)
+app.use('/uploads', express.static(UPLOADS_DIR));
 
 // Раздаём данные (portfolio.json)
-app.use('/data', express.static(path.join(__dirname, 'data')));
+app.use('/data', express.static(DATA_DIR));
 
 // === UPLOADS ===
 const upload = multer({ dest: path.join(__dirname, '.upload_tmp') });
@@ -96,20 +98,21 @@ app.get('/api/tree', async (req, res) => {
 // === Создать папку ===
 app.post('/api/mkdir', requireKey, async (req, res) => {
   try {
-    const relPath = req.body.path || ''; // полный путь, например: "Portrait/NewFolder"
-    if (!relPath.trim()) return res.status(400).json({ error: 'bad path' });
+    const relPath = req.body.path || '';
+    const name = req.body.name || '';
+    if (!name.trim()) return res.status(400).json({ error: 'bad name' });
 
-    const safePath = normalizeName(relPath); 
-    const abs = path.join(PORTFOLIO_DIR, safePath);
+    const safeName = normalizeName(name);
+    const abs = path.join(PORTFOLIO_DIR, relPath, safeName);
 
     await fsp.mkdir(abs, { recursive: true });
-    res.json({ ok: true, created: relPath });
+    res.json({ ok: true, created: path.join(relPath, safeName) });
   } catch (e) {
     res.status(500).json({ error: e.message });
   }
 });
 
-
+// === Загрузка файла ===
 app.post('/api/upload', requireKey, upload.single('file'), async (req, res) => {
   try {
     const rel = req.body.path || '';
@@ -123,6 +126,7 @@ app.post('/api/upload', requireKey, upload.single('file'), async (req, res) => {
   }
 });
 
+// === Переименование ===
 app.post('/api/rename', requireKey, async (req, res) => {
   try {
     const { path: rel='', oldName, newName } = req.body;
@@ -136,6 +140,7 @@ app.post('/api/rename', requireKey, async (req, res) => {
   }
 });
 
+// === Удаление ===
 async function rimraf(p) {
   if (!fs.existsSync(p)) return;
   const stat = await fsp.lstat(p);
@@ -160,6 +165,7 @@ app.post('/api/delete', requireKey, async (req, res) => {
   }
 });
 
+// === Пересборка JSON ===
 app.post('/api/rebuild', requireKey, async (req, res) => {
   try {
     const tree = buildTreeSync(PORTFOLIO_DIR);
@@ -176,122 +182,22 @@ const swaggerDoc = {
   openapi: '3.0.0',
   info: { title: 'Portfolio Admin API', version: '1.0.0' },
   paths: {
-    '/api/tree': {
-      get: {
-        summary: 'Список папок и файлов',
-        parameters: [
-          { name: 'path', in: 'query', schema: { type: 'string' }, required: false }
-        ],
-        responses: { 200: { description: 'OK' } }
-      }
-    },
-
-    '/api/mkdir': {
-      post: {
-        summary: 'Создать папку',
-        requestBody: {
-          required: true,
-          content: {
-            'application/json': {
-              schema: {
-                type: 'object',
-                properties: {
-                  path: { type: 'string', example: 'Portrait' },
-                  name: { type: 'string', example: 'NewFolder' }
-                },
-                required: ['name']
-              }
-            }
-          }
-        },
-        responses: { 200: { description: 'OK' } }
-      }
-    },
-
-    '/api/upload': {
-      post: {
-        summary: 'Загрузить файл',
-        requestBody: {
-          required: true,
-          content: {
-            'multipart/form-data': {
-              schema: {
-                type: 'object',
-                properties: {
-                  path: { type: 'string', example: 'Portrait/NewFolder' },
-                  file: { type: 'string', format: 'binary' }
-                },
-                required: ['file']
-              }
-            }
-          }
-        },
-        responses: { 200: { description: 'OK' } }
-      }
-    },
-
-    '/api/rename': {
-      post: {
-        summary: 'Переименовать файл/папку',
-        requestBody: {
-          required: true,
-          content: {
-            'application/json': {
-              schema: {
-                type: 'object',
-                properties: {
-                  path: { type: 'string', example: 'Portrait' },
-                  oldName: { type: 'string', example: 'OldFile.jpg' },
-                  newName: { type: 'string', example: 'NewFile.jpg' }
-                },
-                required: ['oldName','newName']
-              }
-            }
-          }
-        },
-        responses: { 200: { description: 'OK' } }
-      }
-    },
-
-    '/api/delete': {
-      post: {
-        summary: 'Удалить файл/папку',
-        requestBody: {
-          required: true,
-          content: {
-            'application/json': {
-              schema: {
-                type: 'object',
-                properties: {
-                  path: { type: 'string', example: 'Portrait' },
-                  name: { type: 'string', example: 'FileToDelete.jpg' }
-                },
-                required: ['name']
-              }
-            }
-          }
-        },
-        responses: { 200: { description: 'OK' } }
-      }
-    },
-
-    '/api/rebuild': {
-      post: {
-        summary: 'Пересобрать portfolio.json',
-        responses: { 200: { description: 'OK' } }
-      }
-    },
+    '/api/tree': { get: { summary: 'Список папок и файлов' } },
+    '/api/mkdir': { post: { summary: 'Создать папку' } },
+    '/api/upload': { post: { summary: 'Загрузить файл' } },
+    '/api/rename': { post: { summary: 'Переименовать файл/папку' } },
+    '/api/delete': { post: { summary: 'Удалить файл/папку' } },
+    '/api/rebuild': { post: { summary: 'Пересобрать portfolio.json' } },
   },
   components: {
-    securitySchemes: {
-      AdminKey: { type: 'apiKey', in: 'header', name: 'x-admin-key' }
-    }
+    securitySchemes: { AdminKey: { type: 'apiKey', in: 'header', name: 'x-admin-key' } }
   },
   security: [{ AdminKey: [] }]
 };
 
 app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(swaggerDoc));
 
+// === START ===
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server http://localhost:${PORT}`);

@@ -3,10 +3,10 @@
   const API = {
     base: '/api',
     headers() {
-    const keyInput = document.getElementById('admKey'); // или тот элемент, который у тебя для ключа
-    const key = keyInput ? keyInput.value.trim() : '';
-    return key ? { 'x-admin-key': key } : {};
-  }
+      const keyInput = document.getElementById('admKey');
+      const key = keyInput ? keyInput.value.trim() : '';
+      return key ? { 'x-admin-key': key } : {};
+    }
   };
 
   const els = {
@@ -31,8 +31,10 @@
     btnDelete: document.getElementById('btnDelete'),
   };
 
+  const MEDIA_BASE = 'uploads/1_PORTFOLIO';
+
   // состояние
-  let cwd = []; // массив сегментов пути
+  let cwd = [];
   let lastListing = { folders: [], files: [] };
 
   // helpers
@@ -54,13 +56,11 @@
     root.onclick = (e) => { e.preventDefault(); cwd = []; loadList(); };
     els.crumbs.appendChild(root);
 
-    let acc = [];
     cwd.forEach((seg, idx) => {
       const sep = document.createElement('span');
       sep.textContent = ' / ';
       els.crumbs.appendChild(sep);
 
-      acc.push(seg);
       const a = document.createElement('a');
       a.textContent = seg;
       a.href = '#';
@@ -99,7 +99,7 @@
 
     // файлы
     data.files.forEach(name => {
-      const filePath = `img/1_PORTFOLIO/${joinPath([...cwd, name])}`;
+      const filePath = `${MEDIA_BASE}/${joinPath([...cwd, name])}`;
       const card = document.createElement('div');
       card.className = 'admin-card';
       card.onclick = () => previewFile(name);
@@ -117,7 +117,7 @@
   }
 
   function previewFile(name) {
-    const filePath = `img/1_PORTFOLIO/${joinPath([...cwd, name])}`;
+    const filePath = `${MEDIA_BASE}/${joinPath([...cwd, name])}`;
     if (isImage(name)) {
       els.preview.innerHTML = `<img src="${filePath}" alt="${name}" style="max-width:100%; height:auto; display:block;" />`;
     } else if (isVideo(name)) {
@@ -127,7 +127,6 @@
     }
   }
 
-  // действия
   async function doRebuild() {
     const res = await fetch(`${API.base}/rebuild`, {
       method: 'POST',
@@ -138,39 +137,36 @@
   }
 
   async function doMkdir() {
-  try {
-    const name = els.mkdirName.value.trim(); // твой input для имени папки
-    if (!name) return alert('Введите имя папки');
+    try {
+      const name = els.mkdirName.value.trim();
+      if (!name) return alert('Введите имя папки');
 
-    // текущий путь (cwd) — зависит от твоей логики; убедись, что joinPath(cwd) даёт нужную строку
-    const relPath = joinPath(cwd); // если у тебя нет joinPath — используй просто '' или нужный rel
+      const relPath = joinPath(cwd);
 
-    const res = await fetch(`${API.base}/mkdir`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        ...API.headers()
-      },
-      body: JSON.stringify({ path: relPath, name })
-    });
+      const res = await fetch(`${API.base}/mkdir`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          ...API.headers()
+        },
+        body: JSON.stringify({ path: relPath, name })
+      });
 
-    // для отладки полезно распечатать ответ:
-    let json;
-    try { json = await res.json(); } catch(e){ json = null; }
+      let json;
+      try { json = await res.json(); } catch(e){ json = null; }
 
-    if (!res.ok) {
-      console.error('mkdir failed', res.status, json);
-      return alert('Ошибка создания папки: ' + (json && json.error ? json.error : res.status));
+      if (!res.ok) {
+        console.error('mkdir failed', res.status, json);
+        return alert('Ошибка создания папки: ' + (json?.error || res.status));
+      }
+
+      els.mkdirName.value = '';
+      await loadList();
+    } catch (err) {
+      console.error('doMkdir error', err);
+      alert('Ошибка создания папки (см. консоль)');
     }
-
-    els.mkdirName.value = '';
-    await loadList(); // обновляем список
-  } catch (err) {
-    console.error('doMkdir error', err);
-    alert('Ошибка создания папки (см. консоль)');
   }
-}
-
 
   async function doUpload() {
     const f = els.fileInput.files && els.fileInput.files[0];
