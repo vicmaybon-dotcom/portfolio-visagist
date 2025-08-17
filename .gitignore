@@ -11,9 +11,16 @@ yarn-error.log*
 # Environment files
 .env
 
+
 # Multer temp
 .upload_tmp/
 
 # System/OS
+
+# Temporary upload dir
+.upload_tmp/
+
+# System
+
 .DS_Store
 Thumbs.db
