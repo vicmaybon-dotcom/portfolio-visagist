@@ -180,7 +180,6 @@ app.post('/api/rebuild', requireKey, async (req, res) => {
     res.status(500).json({ error: e.message });
   }
 });
-
 // === Swagger ===
 const swaggerUi = require('swagger-ui-express');
 const swaggerDoc = {
@@ -196,11 +195,7 @@ const swaggerDoc = {
         responses: {
           200: {
             description: 'JSON со структурой папок/файлов',
-            content: {
-              'application/json': {
-                schema: { type: 'object' }
-              }
-            }
+            content: { 'application/json': { schema: { type: 'object' } } }
           }
         }
       }
@@ -208,44 +203,62 @@ const swaggerDoc = {
     '/api/mkdir': {
       post: {
         summary: 'Создать папку',
+        security: [{ AdminKey: [] }],
         requestBody: {
           required: true,
           content: {
             'application/json': {
               schema: {
                 type: 'object',
-                properties: {
-                  path: { type: 'string', example: 'new_folder' }
-                }
+                properties: { path: { type: 'string', example: 'new_folder' } }
               }
             }
           }
         },
-        responses: { 200: { description: 'Папка создана' } }
+        responses: {
+          200: { description: 'Папка создана' },
+          401: { description: 'Не авторизован' }
+        }
       }
     },
     '/api/upload': {
       post: {
         summary: 'Загрузить файл',
-        responses: { 200: { description: 'Файл загружен' } }
+        security: [{ AdminKey: [] }],
+        responses: {
+          200: { description: 'Файл загружен' },
+          401: { description: 'Не авторизован' }
+        }
       }
     },
     '/api/rename': {
       post: {
         summary: 'Переименовать файл/папку',
-        responses: { 200: { description: 'Переименовано' } }
+        security: [{ AdminKey: [] }],
+        responses: {
+          200: { description: 'Переименовано' },
+          401: { description: 'Не авторизован' }
+        }
       }
     },
     '/api/delete': {
       post: {
         summary: 'Удалить файл/папку',
-        responses: { 200: { description: 'Удалено' } }
+        security: [{ AdminKey: [] }],
+        responses: {
+          200: { description: 'Удалено' },
+          401: { description: 'Не авторизован' }
+        }
       }
     },
     '/api/rebuild': {
       post: {
         summary: 'Пересобрать portfolio.json',
-        responses: { 200: { description: 'Файл пересобран' } }
+        security: [{ AdminKey: [] }],
+        responses: {
+          200: { description: 'Файл пересобран' },
+          401: { description: 'Не авторизован' }
+        }
       }
     }
   },
@@ -256,6 +269,9 @@ const swaggerDoc = {
   },
   security: [{ AdminKey: [] }]
 };
+
+app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(swaggerDoc));
+
 
 
 app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(swaggerDoc));
