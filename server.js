@@ -181,7 +181,7 @@ app.post('/api/rebuild', requireKey, async (req, res) => {
   }
 });
 
-/ === Swagger ===
+// === Swagger ===
 const swaggerUi = require('swagger-ui-express');
 const swaggerDoc = {
   openapi: '3.0.0',
