@@ -13,7 +13,9 @@ app.use(express.json());
 // === CONFIG ===
 const PUBLIC_DIR    = path.join(__dirname); // сайт (html, css, js)
 const UPLOADS_DIR   = path.join(__dirname, 'uploads');
-const PORTFOLIO_DIR = path.join(UPLOADS_DIR, '1_PORTFOLIO');
+const { mediaDir, mediaUrl } = require('./config');
+const PORTFOLIO_DIR = path.join(__dirname, mediaDir);
+
 const DATA_DIR      = path.join(__dirname, 'data');
 const JSON_FILE     = path.join(DATA_DIR, 'portfolio.json');
 
@@ -35,7 +37,10 @@ function requireKey(req, res, next) {
 app.use(express.static(PUBLIC_DIR));
 
 // Раздаём папку uploads (все медиа)
-app.use('/uploads', express.static(UPLOADS_DIR));
+//app.use('/uploads', express.static(UPLOADS_DIR));
+
+// Раздаём медиа
+app.use(mediaUrl, express.static(PORTFOLIO_DIR));
 
 // Раздаём данные (portfolio.json)
 app.use('/data', express.static(DATA_DIR));

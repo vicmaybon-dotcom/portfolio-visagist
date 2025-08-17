@@ -1,5 +1,7 @@
 // js/admin.js
 (() => {
+const MEDIA_URL = '/uploads';
+
   const API = {
     base: '/api',
     headers() {
@@ -99,7 +101,8 @@
 
     // файлы
     data.files.forEach(name => {
-      const filePath = `${MEDIA_BASE}/${joinPath([...cwd, name])}`;
+      const filePath = `${MEDIA_URL}/${joinPath([...cwd, name])}`;
+
       const card = document.createElement('div');
       card.className = 'admin-card';
       card.onclick = () => previewFile(name);
@@ -117,7 +120,8 @@
   }
 
   function previewFile(name) {
-    const filePath = `${MEDIA_BASE}/${joinPath([...cwd, name])}`;
+    const filePath = `${MEDIA_URL}/${joinPath([...cwd, name])}`;
+
     if (isImage(name)) {
       els.preview.innerHTML = `<img src="${filePath}" alt="${name}" style="max-width:100%; height:auto; display:block;" />`;
     } else if (isVideo(name)) {
