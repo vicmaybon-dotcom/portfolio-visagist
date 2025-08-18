@@ -37,7 +37,7 @@ function requireKey(req, res, next) {
 app.use(express.static(PUBLIC_DIR));
 
 // Раздаём папку uploads (все медиа)
-//app.use('/uploads', express.static(UPLOADS_DIR));
+app.use('/uploads', express.static(UPLOADS_DIR));
 
 // Раздаём медиа
 app.use(mediaUrl, express.static(PORTFOLIO_DIR));
