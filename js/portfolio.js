@@ -46,7 +46,7 @@ fetch('data/portfolio.json')
       gallery.className = 'gallery';
       currentData.__files__.forEach(file => {
         const ext = file.split('.').pop().toLowerCase();
-        const filePath = `img/1_PORTFOLIO/${path.join('/')}/${file}`;
+        const filePath = `uploads/${path.join('/')}/${file}`;
         if (['jpg', 'jpeg', 'png', 'webp', 'gif'].includes(ext)) {
           const img = document.createElement('img');
           img.src = filePath;
@@ -78,7 +78,7 @@ fetch('data/portfolio.json')
         }
 
         const imgPath = previewFile
-          ? `img/1_PORTFOLIO/${subPath.join('/')}/${previewFile}`
+          ? `uploads/${subPath.join('/')}/${previewFile}`
           : 'img/no-image.jpg';
 
         let link = `portfolio.html?category=${encodeURIComponent(path[0] || sub)}`;
