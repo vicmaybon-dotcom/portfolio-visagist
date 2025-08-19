@@ -1,17 +1,150 @@
+/* База */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
 body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 0; }
-  header { display:flex; align-items:center; gap:12px; padding:12px 16px; background:#111; color:#fff; position:sticky; top:0; z-index:2; }
-  main { display:grid; grid-template-columns: 280px 1fr; gap:16px; padding:16px; }
-  aside { border-right:1px solid #eee; padding-right:16px; }
-  .row { display:flex; gap:8px; flex-wrap:wrap; align-items:center; }
-  input, button, select { padding:8px 10px; }
-  ul { list-style:none; padding-left:0; }
-  li { margin:4px 0; }
-  .folder { cursor:pointer; }
-  .crumbs { font-size:14px; color:#666; margin:8px 0 16px; }
-  .grid { display:grid; grid-template-columns: repeat(auto-fill, minmax(140px,1fr)); gap:12px; }
-  .cell { border:1px solid #eee; border-radius:8px; overflow:hidden; background:#fafafa; }
-  .cell .thumb { display:block; width:100%; aspect-ratio:1/1; object-fit:cover; }
-  .cell .meta { padding:8px; font-size:13px; display:flex; justify-content:space-between; align-items:center; gap:6px; }
-  .danger { background:#e53935; color:#fff; border:none; cursor:pointer; }
-  .ok { background:#111; color:#fff; border:none; cursor:pointer; }
-  .muted { color:#888; font-size:13px; }
+header { display:flex; align-items:center; gap:12px; padding:12px 16px; background:#111; color:#fff; position:sticky; top:0; z-index:2; }
+/*main { display:grid; grid-template-columns: 280px 1fr; gap:16px; padding:16px; }*/
+aside { border-right:1px solid #eee; padding-right:16px; }
+.row { display:flex; gap:8px; flex-wrap:wrap; align-items:center; }
+input, button, select { padding:8px 10px; font: inherit; }
+ul { list-style:none; padding-left:0; margin: 0; }
+li { margin:4px 0; }
+.folder { cursor:pointer; }
+.crumbs { font-size:14px; color:#666; margin:8px 0 16px; }
+.grid { display:grid; grid-template-columns: repeat(auto-fill, minmax(140px,1fr)); gap:12px; }
+.cell { border:1px solid #eee; border-radius:8px; overflow:hidden; background:#fafafa; }
+.cell .thumb { display:block; width:100%; aspect-ratio:1/1; object-fit:cover; }
+.cell .meta { padding:8px; font-size:13px; display:flex; justify-content:space-between; align-items:center; gap:6px; }
+.danger { background:#e53935; color:#fff; border:none; cursor:pointer; }
+.ok { background:#111; color:#fff; border:none; cursor:pointer; }
+.muted { color:#888; font-size:13px; }
+
+/* Кнопка "Staff only" как ссылка */
+.admin {
+  display: inline-block;
+  text-decoration: none;
+  color: #a67e5a;
+  border: 1px solid #a67e5a;
+  font-weight: 100;
+  font-size: 1.2em;
+  padding: 8px 15px;
+  border-radius: 5px;
+  transition: background-color .3s ease, color .3s ease, border-color .3s ease;
+}
+.admin:hover  {
+  color: #a67e5a;
+  background-color: rgba(166, 126, 90, 0.4);
+  border-color: #a67e5a;
+}
+
+/* ---- Модальное окно входа ---- */
+.modal {
+  position: fixed;
+  inset: 0;
+  width: 100%; height: 100%;
+  background: rgba(59, 43, 32, 0.96); /* чуть темнее, чем было */
+  display: none;                /* скрыто по умолчанию */
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  /* легкая матовость (если поддерживается) */
+  backdrop-filter: blur(1px);
+}
+.modal[aria-hidden="true"] { display: none; }
+.modal[aria-hidden="false"], .modal.show { display: flex; }
+
+.modal-content {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  width: 320px;
+  max-width: calc(100% - 32px);
+  text-align: center;
+}
+
+/* Поля ввода в модалке */
+.modal-content input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0 12px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+/* Обёртка поля пароля + глазик */
+.password-wrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+#passwordInput {
+  flex: 1;
+  width: 100%;
+  padding-right: 40px; /* место под глазик */
+}
+#togglePassword {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2em;
+  line-height: 1;
+  color: #333;
+  padding: 0;
+}
+
+/* Кнопка-глазик — отдельный класс, чтобы не наследовала общий стиль кнопок */
+.toggle-password {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2em;
+  line-height: 1;
+  color: #333;
+  padding: 0;
+}
+
+/* Кнопки действий модалки (Войти / Отмена) — стилизуем только их, не глазик */
+.modal-actions { display: flex; gap: 8px; justify-content: center; margin-top: 8px; }
+.modal-actions button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background: #007bff;
+  color: #fff;
+  cursor: pointer;
+}
+.modal-actions button:disabled { opacity: .6; cursor: default; }
+
+/* Сообщения об ошибке */
+.modal-content .error,
+#loginError {
+  color: #d93025;
+  font-size: 0.9rem;
+  margin-top: 10px;
+  min-height: 1.2em; /* чтобы не прыгала верстка */
+}
+
+/* Фокусы — доступность клавиатурой */
+a:focus, button:focus, input:focus, select:focus {
+  outline: 2px solid #a67e5a;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Адаптив: на узких экранах сайдбар вниз */
+@media (max-width: 900px) {
+  main { grid-template-columns: 1fr; }
+  aside { border-right: none; border-bottom: 1px solid #eee; padding-bottom: 16px; margin-bottom: 16px; }
+}

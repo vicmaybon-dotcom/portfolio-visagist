@@ -24,11 +24,12 @@ document.addEventListener('DOMContentLoaded', () => {
             window.addEventListener('scroll', () => {
                 const scrollY = window.scrollY;
 
-                if (scrollY >= startPoint && scrollY < endPoint) {
+                if (scrollY >= startPoint) {
                     stickyHeader.classList.add('visible');
                 } else {
                     stickyHeader.classList.remove('visible');
                 }
+                
             });
         }
     }

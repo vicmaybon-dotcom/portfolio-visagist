@@ -236,8 +236,141 @@ const MEDIA_URL = '/uploads';
     els.btnUpload.addEventListener('click', doUpload);
     els.btnRename.addEventListener('click', doRename);
     els.btnDelete.addEventListener('click', doDelete);
+	
+	const logoutBtn = document.getElementById('logoutBtn');
+	if (logoutBtn) {
+		logoutBtn.addEventListener('click', () => {
+			localStorage.removeItem('admKey'); // очищаем ключ
+    alert('Вы вышли из админки');
+    location.reload(); // перезагружаем страницу → снова появится окно входа
+  });
+}
   }
 
   bind();
   loadList().catch(err => console.error(err));
+  
+  // === Модалка логина ===
+  const loginModal = document.getElementById('loginModal');
+  const passwordInput = document.getElementById('passwordInput');
+  const loginBtn = document.getElementById('loginBtn');
+  const cancelBtn = document.getElementById('cancelBtn');
+  const loginError = document.getElementById('loginError');
+
+// === Глазик + доступность ===
+const togglePasswordBtn = document.getElementById('togglePassword');
+
+if (togglePasswordBtn && passwordInput) {
+  // начальное состояние
+  togglePasswordBtn.setAttribute('aria-pressed', 'false');
+  togglePasswordBtn.setAttribute('aria-label', 'Показать пароль');
+
+  togglePasswordBtn.addEventListener('click', () => {
+    const show = passwordInput.type === 'password';
+    passwordInput.type = show ? 'text' : 'password';
+
+    // обновляем aria
+    togglePasswordBtn.setAttribute('aria-pressed', show ? 'true' : 'false');
+    togglePasswordBtn.setAttribute('aria-label', show ? 'Скрыть пароль' : 'Показать пароль');
+
+    // меняем иконку
+    togglePasswordBtn.innerHTML = show
+      ? '<i class="fa-solid fa-eye-slash" aria-hidden="true"></i>'
+      : '<i class="fa-solid fa-eye" aria-hidden="true"></i>';
+
+    // оставляем фокус в поле
+    passwordInput.focus();
+  });
+}
+
+
+  // открыть модалку
+  window.openLoginModal = () => {
+    loginError.textContent = '';
+    passwordInput.value = '';
+    loginModal.style.display = 'flex';
+    passwordInput.focus();
+  };
+
+  // закрыть
+  function closeLoginModal() {
+    loginModal.style.display = 'none';
+  }
+
+  // войти
+  async function doLogin() {
+    const pass = passwordInput.value.trim();
+    if (!pass) return;
+
+    // проверим доступ (дернем /api/tree на корень)
+    try {
+      const res = await fetch(`${API.base}/tree?path=`, {
+        headers: { 'x-admin-key': pass }
+      });
+      if (res.ok) {
+        localStorage.setItem('admKey', pass);
+        els.key.value = pass; // проброс в скрытый admKey
+        closeLoginModal();
+        await loadList();
+      } else {
+        loginError.textContent = 'Неверный пароль';
+      }
+    } catch (e) {
+      loginError.textContent = 'Ошибка соединения';
+    }
+  }
+
+  loginBtn.addEventListener('click', doLogin);
+  cancelBtn.addEventListener('click', () => {
+  window.location.href = 'portfolio.html'; 
+});
+  passwordInput.addEventListener('keydown', e => {
+    if (e.key === 'Enter') doLogin();
+  });
+ /* 
+	const togglePasswordBtn = document.getElementById('togglePassword');
+
+if (togglePasswordBtn && passwordInput) {
+  togglePasswordBtn.addEventListener('click', () => {
+    if (passwordInput.type === 'password') {
+      passwordInput.type = 'text';
+      togglePasswordBtn.innerHTML = '<i class="fa-solid fa-eye-slash"></i>';
+    } else {
+      passwordInput.type = 'password';
+      togglePasswordBtn.innerHTML = '<i class="fa-solid fa-eye"></i>';
+    }
+  });
+}
+*/
+  // === Проверка ключа при загрузке ===
+(async function initLogin() {
+  const savedKey = localStorage.getItem('admKey');
+
+  if (savedKey) {
+    try {
+      const res = await fetch(`${API.base}/tree?path=`, {
+        headers: { 'x-admin-key': savedKey }
+      });
+
+      if (res.ok) {
+        els.key.value = savedKey; // пробросим в поле
+        await loadList(); // загрузим админку
+        return;
+      } else {
+        // ключ неверный → удалим
+        localStorage.removeItem('admKey');
+      }
+    } catch (e) {
+      console.error('Ошибка проверки ключа', e);
+      localStorage.removeItem('admKey');
+    }
+  }
+
+  // если пароля в localStorage нет — показываем модалку
+if (!localStorage.getItem('admKey')) {
+  openLoginModal();
+}
+})();
+
+  
 })();
