@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Портфолио | FANTASY</title>
+	
+<link rel="stylesheet" href="css/globals.css?v=3">	
+	<link rel="stylesheet" href="css/base.css?v=3">
+	<link rel="stylesheet" href="css/header-admin-portfolio.css?v=3">
+	<link rel="stylesheet" href="css/admin-portfolio-styles.css?v=3">
+  <link rel="stylesheet" href="css/admin-shell.css?v=3">
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+	<link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:ital,wght@0,400..700;1,400..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poiret+One&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Savate:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+	<link rel="icon" href="favicon.png" type="image/png">
+
+</head>
+<body class="hero-page">
+    <header id="header">
+	<h1 class="hero-title">FANTASY</h1>
+	<button class="nav-toggle" aria-label="Open menu">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+    </button>
+        <nav aria-label="Main navigation">
+            
+            <ul class="menu-main-horizontal">
+			<li class="active-link"><a href="index.html">Главная</a></li>
+                <li><a href="portfolio.html">Портфолио</a></li>
+                <li><a href="services.html">Услуги</a></li>
+                <li><a href="#about">О нас</a></li>
+                <li><a href="#contacts">Контакты</a></li>
+            </ul>
+        </nav>
+    </header>
+
+<main class="admin-body">	
+   <!-- Левая колонка -->
+  <aside class="admin-explorer">
+    <h2>Панель управления</h2>
+    <p class="admin-hint">
+      ⚠️ Перед созданием папки или файла убедитесь, что в правой области открыт нужный раздел.
+    </p>
+    <div class="admin-ops">
+      <div class="row">
+        <input id="mkdirName" placeholder="Название папки" />
+        <button id="btnMkdir" class="ok">Создать папку</button>
+      </div>
+      <div class="row">
+        <input type="file" id="fileInput" />
+        <button id="btnUpload" class="ok">Загрузить</button>
+      </div>
+      <div class="row">
+        <select id="renameType">
+          <option value="file">Файл</option>
+          <option value="folder">Папка</option>
+        </select>
+        <input id="renameOld" placeholder="Старое имя" />
+        <input id="renameNew" placeholder="Новое имя" />
+        <button id="btnRename">Переименовать</button>
+      </div>
+      <div class="row">
+        <select id="deleteType">
+          <option value="file">Файл</option>
+          <option value="folder">Папка</option>
+        </select>
+        <input id="deleteName" placeholder="Имя для удаления" />
+        <button id="btnDelete">Удалить</button>
+      </div>
+      <div class="row">
+       <!-- <button id="btnRefresh">Обновить список</button>-->
+        <button id="btnRebuild" class="save">Сохранить изменения</button>
+      </div>
+      <div class="row">
+        <button id="logoutBtn" class="danger">Выйти</button>
+      </div>
+    </div>
+    
+  </aside>
+    <!-- Правая колонка -->
+  <section class="admin-preview">
+    <div class="sticky-header">
+      <h2 id="pageTitle" class="section-title">Портфолио</h2>
+
+    <!-- Хлебные крошки -->
+    <nav id="breadcrumbs" class="breadcrumbs"></nav>
+  </div>
+  <!-- Встроенный просмотрщик -->
+<div id="adminViewer" class="admin-viewer is-hidden">
+  <div class="viewer-inner">
+    <img id="viewerImg" alt="" />
+    <video id="viewerVideo" controls playsinline></video>
+  </div>
+</div>
+    <div class="preview-scroll">
+      <section id="portfolio-container" class="portfolio-section">
+       
+          
+            <!-- ВНУТРЕННИЙ СКРОЛЛ -->
+             
+                <div id="categoryList">
+                      <!-- Контент портфолио -->
+                      <div id="content" class="portfolio-grid"></div>
+                </div>
+              
+        
+      </section>
+  </div>
+  </section>
+
+</main>
+
+
+<!--<script src="js/header-admin-portfolio.js"></script>
+<script src="js/admin-portfolio-scripts.js"></script>-->
+
+<script src="js/header-admin-portfolio.js"></script>
+
+<script src="js/admin-portfolio.js"></script>
+<script src="js/admin-script.js"></script>
+</body>
+</html>

@@ -1,0 +1,234 @@
+/* ================================== */
+/* 1. Базовые стили для хедеров */
+/* ================================== */
+
+#header {
+    position: relative;
+    top: 0; /**/
+    left: 0; /**/
+    width: 100%; /**/
+	
+    padding: 20px;
+    box-sizing: border-box; /**/
+    display: flex; /**/
+    justify-content: space-between; /* ??? */
+    background-color: transparent;
+    transition: background-color 0.3s ease; /*padding 0.3s ease; */
+    z-index: 2000; /**/
+}
+#header { /* вставила */
+    position: relative;
+    align-items: flex-start;
+    padding: 20px;
+    background-color: transparent;
+	
+}
+ 
+.hero-title {
+    font-family: "Poiret One", sans-serif;
+    font-size: 3em;
+    font-weight: 100;
+    line-height: 0.7;
+    color: #a67e5a;
+	/*text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.8);*/
+    margin: 0;
+	align-items: flex-start; /* ??? */
+}
+
+
+/* ================================== */
+/* 2. Общие стили меню */
+/* ================================== */
+/* Общие базовые стили для всех списков меню */
+ul[class^="menu-"] {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-radius: 5px;
+}
+
+/* Горизонтальные меню на десктопе */
+.menu-main-horizontal {
+    display: flex;
+    gap: 15px;
+}
+
+/* Вертикальные выпадающие меню */
+.menu-main-vertical {
+    display: flex;
+    flex-direction: column;
+    gap: 0; /* убираем зазор */
+}
+
+#header nav a {
+    text-decoration: none;
+    font-weight: 200;
+    font-size: 1em;
+	color: #a67e5a;
+    padding: 6px 12px;
+    transition: /*all 0.3s ease*/ background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    border: 1px solid #a67e5a;
+/*	border-radius: 5%;*/
+}
+
+#header nav a:hover {
+    color: white;
+    background-color: rgba(166, 126, 90, 0.6);
+}
+
+#portfolio-container {
+    margin-top: 40px; /* чуть больше высоты основного хедера */
+}
+/* ================================== */
+/* 3. Выпадающие подменю */
+/* ================================== */
+nav ul li {
+    position: relative;
+}
+
+nav ul li ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #a67e5a;
+    min-width: 180px;
+    flex-direction: column;
+    border: 1px solid rgba(255,255,255,0.2);
+	/*border-radius: 5px;*/
+    z-index: 2000;
+}
+
+nav ul li:hover > ul {
+    display: flex;
+}
+
+nav ul li ul a {
+    padding: 10px;
+    color: white;
+   /* border: none;	*/
+}
+
+nav ul li ul a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+	
+}
+
+/* ================================== */
+/* 4. Бургер-меню */
+/* ================================== */
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+	background: none;
+    border: none;
+	
+	position: relative;  /* или absolute/fixed, если нужно */
+    z-index: 3100;
+	
+	margin: 3px;
+	top: 50%; /* было 50% или другое — подними выше */
+    transform: translateY(-20%);
+    
+}
+
+.nav-toggle .dot {
+    width: 5px;
+    height: 5px;
+	
+    background-color: white;
+    border-radius: 50%;
+    margin: 2px 0;
+	position: relative;  /* или absolute/fixed, если нужно */
+    z-index: 3050;
+}
+
+/* ================================== */
+/* 5. Мобильная версия */
+/* ================================== */
+@media (max-width: 1080px) {
+    /* Бургер */
+    .nav-toggle {
+        display: flex;
+        position: relative;  /* базовая точка для позиционирования меню */
+        z-index: 3001;        /* выше меню и ссылок */
+        width: 44px;          /* увеличиваем зону клика */
+        height: 44px;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+		 background-color: #a67e5a; /* НЕ ЗАБЫТЬ УБРАТЬ!!! КРАСНЫЙ ЦВЕТ ВОКРУГ ТОЧЕК */
+		 border-radius: 15%;
+		
+    }
+
+    /* Меню в обычном хедере */
+    #header nav {
+        position: absolute;
+        top: 50px; /* прямо под бургером */
+        right: 55px;
+        background-color: rgba(0, 0, 0, 0.85);
+        width: 150px;
+        opacity: 0;
+        visibility: hidden;
+        flex-direction: column;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+        z-index: 2000;
+    }
+
+    /* Ссылки */
+    #header nav a {
+        display: block;
+        text-align: left;
+        padding: 8px 12px;
+        border: none;
+    }
+
+    /* Мобильное подменю */
+    nav ul li ul {
+        position: static;
+        border: none;
+        background-color: rgba(255, 255, 255, 0.05);
+    }
+
+    nav ul li ul a {
+        padding-left: 20px;
+    }
+
+    /* Открытое меню */
+    #header nav.is-open {
+        opacity: 1;
+        visibility: visible;
+       border-radius: 3%;
+		transform: scale(1.8);           /* Увеличение на 30% */
+    transform-origin: top right;     /* Чтобы увеличение шло от угла */
+    }
+
+    /* Списки */
+    #header nav ul {
+        flex-direction: column;
+        width: 100%;
+        border: 1px solid #a67e5a;
+    }
+
+    #header nav ul li {
+        width: 100%;
+        border-bottom: 1px solid #a67e5a;
+    }
+
+    #header nav ul li:last-child {
+        border-bottom: none;
+    }
+
+    /* Вертикальная версия меню */
+    .menu-main-horizontal {
+        flex-direction: column;
+        gap: 0; /* без зазоров */
+        width: 100%;
+    }
+    
+}
+

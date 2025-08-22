@@ -1,0 +1,238 @@
+/* ===== Оболочка админки (не трогаем стили портфолио) ===== */
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+  }
+/* Контейнер двух колонок */
+main.admin-body {
+    display: flex;
+    gap: 16px;
+    height: calc(100vh - 80px); /* экран минус шапка, подгони под свой header */
+    overflow: hidden;
+  }
+
+  .admin-explorer {
+    flex: 0 0 30%;
+  max-width: 30%;
+  background: #ccc;
+  border: 2px solid #ccc;   /* четче обводка */
+  border-radius: 8px;
+  padding: 12px;
+  overflow-y: auto;
+  min-height: 0;
+  box-sizing: border-box;
+  margin-bottom: 2%;      /* 🔹 либо внешний отступ, чтобы граница не упиралась */
+  }
+
+  .admin-preview {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    border-left: 1px solid #eee;
+    min-height: 0; 
+    margin-bottom: 2%; 
+}
+
+
+  .admin-preview h2 {
+    text-align: center;
+    
+  }
+  /* Общий контейнер для заголовка + хлебных крошек */
+.admin-preview .sticky-header {
+    position: sticky;
+    top: 0;
+    background: #fff;           /* белая подложка */
+    z-index: 10;                /* выше содержимого */
+    padding: 12px 16px;         /* внутренние отступы */
+    border-bottom: 1px solid #eee;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* лёгкая тень */
+  }
+  
+  /* Заголовок страницы */
+  .admin-preview .sticky-header .section-title {
+    margin: 0;
+    text-align: center;
+    font-size: 1.4em;
+    font-weight: 600;
+    padding-bottom: 6px;
+  }
+  
+  /* Хлебные крошки */
+  .admin-preview .sticky-header .breadcrumbs {
+    margin: 0;
+    font-size: 0.9em;
+    color: #8c6b4f;  /* можно в тон меню */
+  }
+  
+  .preview-scroll {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto; /* скролл внутри */
+    padding: 15px;
+  }
+  
+  /* Чтобы заголовки и контент красиво «дышали» внутри правой части */
+  .admin-preview .section-title,
+  .admin-preview .breadcrumbs,
+  .admin-preview #listing,
+  .admin-preview #content,
+  .admin-preview #categoryList {
+    /* подстраховка на случай, если в портфолио нет внешних отступов */
+    margin-left: 0;
+    margin-right: 0;
+  }
+  
+  /* Мобильный режим — колонки в столбик */
+  @media (max-width: 900px) {
+    main.admin-body {
+      flex-direction: column;
+    }
+    .admin-explorer,
+    .admin-preview {
+      max-width: 100%;
+      width: 100%;
+      position: static;
+    }
+  }
+  .admin-ops .row {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 12px;
+  }
+  .admin-hint {
+    font-size: 13px;
+    color: #a33;
+    margin: 8px 0 12px;
+    padding: 6px;
+    border-left: 3px solid #a33;
+    background: #fff5f5;
+    border-radius: 4px;
+  }
+  
+  /* Кнопка сохранения — золотая */
+  #btnRebuild {
+    background: #a67e5a;   /* золотой */
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background .2s ease;
+  }
+  
+  #btnRebuild:hover {
+    background: #3B2B20;   /* темнее при наведении */
+  }
+  
+  .admin-ops input,
+  .admin-ops select,
+  .admin-ops button {
+    font-size: 14px;
+    padding: 6px 8px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+  }
+  
+  .admin-ops button {
+    background: #3B2B20;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background .2s ease;
+  }
+  
+  .admin-ops button:hover {
+    background: #5a3c2d;
+  }
+  .admin-ops button.danger {
+    background: #a33;
+  }
+  
+  .admin-ops button.danger:hover {
+    background: #c55;
+  }
+  
+  /* Общие кнопки */
+.admin-ops button {
+    background: #3B2B20;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background .2s ease;
+    padding: 6px 12px;
+    border-radius: 6px;
+    
+    /* чтобы кнопки подгонялись под контент */
+    width: auto;
+    min-width: 140px;   /* одинаковая ширина для всех */
+    text-align: center;  /* прижать текст вправо */
+    display: block;
+    margin-left: auto;  /* прижимаем кнопку к правому краю */
+  }
+  
+  .admin-ops button:hover {
+    background: #5a3c2d;
+  }
+  
+  /* Кнопка "Сохранить изменения" — золотая и слева */
+  .admin-ops button.save {
+    background: #c49a6c;   /* золотистый */
+    color: #fff;
+    font-weight: bold;
+    margin-left: 0;        /* прижимаем к левому краю */
+    margin-right: auto;    /* противоположный флоу */
+  }
+  
+  .admin-ops button.save:hover {
+    background: #a67c52;   /* темнее при наведении */
+  }
+  
+  /* Кнопка "Выйти" остаётся на всю ширину */
+  .admin-ops button.danger {
+    background: #a33;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .admin-ops button.danger:hover {
+    background: #c55;
+  }
+  /* Встроенный просмотрщик */
+.admin-viewer {
+  margin: 12px 0 16px;
+  padding: 10px;
+  background: #fff;
+  border: 1px solid #e6e6e6;
+  border-radius: 8px;
+  box-shadow: 0 1px 2px rgba(0,0,0,.04);
+}
+.admin-viewer.is-hidden { display: none; }
+
+.viewer-inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 120px;
+}
+
+.viewer-inner img,
+.viewer-inner video {
+  max-width: 100%;
+  max-height: 64vh;
+  object-fit: contain;
+  display: none;          /* включаем через классы ниже */
+}
+
+/* какие элементы показывать */
+.admin-viewer.show-img  #viewerImg  { display: block; }
+.admin-viewer.show-video#viewerVideo{ display: block; }
+
+/* (необязательно) тонкая линия сверху, чтобы отделить от карточек */
+.admin-viewer { border-top-width: 2px; }
+
+/* Заглушка для просмотрщика */
+#adminViewer {
+  display: none !important; /* полностью скрываем */
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
