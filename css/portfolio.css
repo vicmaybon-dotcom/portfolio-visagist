@@ -1,4 +1,4 @@
-/* ===== Портфолио ===== */
+/* ===== Портфолио: общий контейнер ===== */
 .portfolio-main {
   background-color: #fff;
   color: #000;
@@ -11,121 +11,76 @@
   padding: 20px;
 }
 
-.portfolio-breadcrumbs {
-  margin: 15px 0 25px;
+/* ===== Хлебные крошки ===== */
+.breadcrumbs {
   font-size: 0.9rem;
-  color: #666;
+  margin: 10px 0 20px;
 }
-
-.portfolio-breadcrumbs a {
-  color: inherit;
+.breadcrumbs a {
+  color: #a67e5a;
   text-decoration: none;
 }
-
-.portfolio-breadcrumbs a:hover {
+.breadcrumbs a:hover {
   text-decoration: underline;
 }
 
-/* Список подпапок */
-.portfolio-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
+.breadcrumbs a.active {
+  color: #a67e5a;
+  text-decoration: underline;         /* убираем рамку */
+            /* сброс отступов */
+  
 }
 
-.portfolio-list .portfolio-item-link {
-  padding: 12px 18px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  background: #f7f7f7;
+
+
+/* ===== Список категорий ===== */
+.category-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+  margin-top: 24px;
+}
+
+/* Карточка категории */
+.category-card {
+  display: block;
+  position: relative;
+  aspect-ratio: 3 / 2; /* вместо padding-bottom */
+  border-radius: 16px;
+  overflow: hidden;
   text-decoration: none;
-  color: #000;
-  transition: background 0.3s;
+  color: inherit;
+  background: #f3f3f3;
+  box-shadow: 0 1px 6px rgba(0,0,0,.08);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.category-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0,0,0,.12);
 }
 
-.portfolio-list .portfolio-item-link:hover {
-  background: #eaeaea;
+/* Изображение */
+.category-card .card-image {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  filter: brightness(.88);
+  transition: transform .35s ease, filter .35s ease;
+}
+.category-card:hover .card-image {
+  transform: scale(1.05);
+  filter: brightness(.98);
 }
 
-/* Галерея */
-.portfolio-gallery {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.portfolio-gallery img,
-.portfolio-gallery video {
-  max-width: 100%;
-  height: auto;
-  border-radius: 4px;
-}
-
-.portfolio-video {
-  max-width: 300px;
-}
-
-/* STAFF ONLY */
-.staff-only-btn {
-  padding: 8px 15px;
-  background: #333;
+/* Заголовок */
+.category-card .card-title {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  padding: 12px 14px;
+  font: 600 16px/1.2 "Roboto Condensed", sans-serif;
   color: #fff;
-  border-radius: 4px;
-  text-decoration: none;
-  font-size: 0.85rem;
-  transition: background 0.3s;
-}
-
-.staff-only-btn:hover {
-  background: #555;
-}
-
-/* ===== Категории: сетка карточек ===== */
-#content .category-list{
-  display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
-  gap:16px;
-  margin-top:24px;
-}
-
-/* Карточка */
-.category-card{
-  position:relative;
-  display:block;
-  height:0;
-  padding-bottom:66%;            /* Соотношение 3:2 */
-  border-radius:16px;
-  overflow:hidden;
-  text-decoration:none;
-  background:#f3f3f3;
-  box-shadow:0 1px 6px rgba(0,0,0,.08);
-  transition:transform .2s ease, box-shadow .2s ease;
-}
-.category-card:hover{
-  transform:translateY(-2px);
-  box-shadow:0 6px 18px rgba(0,0,0,.12);
-}
-
-/* Слой с изображением */
-.category-card .card-image{
-  position:absolute; inset:0;
-  background-size:cover;
-  background-position:center;
-  filter:brightness(.88);
-  transition:transform .35s ease, filter .35s ease;
-}
-.category-card:hover .card-image{
-  transform:scale(1.05);
-  filter:brightness(.98);
-}
-
-/* Заголовок поверх картинки */
-.category-card .card-title{
-  position:absolute; left:0; right:0; bottom:0;
-  padding:12px 14px;
-  font:600 16px/1.2 "Roboto Condensed",sans-serif;
-  color:#fff;
-  background:linear-gradient(
+  background: linear-gradient(
     180deg,
     rgba(0,0,0,0) 0%,
     rgba(0,0,0,.45) 60%,
@@ -133,84 +88,172 @@
   );
 }
 
-/* ===== Галерея внутри категории ===== */
-.gallery{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-  gap:12px;
-  margin-top:20px;
+/* ===== Галерея ===== */
+/* Базовая сетка превью */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
 }
 
-.gallery img,
-.gallery video{
- width:100%; height:auto;
-  
-  display:block;
-  border-radius:12px;
-  box-shadow:0 1px 6px rgba(0,0,0,.06);
+/* Для 1–2 элементов не растягиваемся на всю ширину */
+.gallery.gallery--compact {
+  grid-template-columns: repeat(auto-fit, 240px);
+  justify-content: start;            /* прижать к левому краю */
 }
 
-/* Подстраховка, если где-то остался старый класс */
-.portfolio-grid{ display:block; }
-.category-card {
-  display: block;
-  text-decoration: none;
-  color: inherit;
+/* Ячейка с фиксированным соотношением сторон */
+.gallery .cell {
+  position: relative;
   overflow: hidden;
+  border-radius: 8px;
+  background: #f0f0f0;
+  aspect-ratio: 3/4;   /* или 4/5 — нужное соотношение */
+}
+.gallery img {
+  width: 100%;
+  height: 250px; /* или 300px — подбирается */
+  object-fit: cover;
+  object-position: top; /* ключевое — фокусируемся на верхней части */
+  border-radius: 8px;
+}
+/* Медиа внутри ячейки всегда cover */
+.gallery .cell > img,
+.gallery .cell > video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;      /* делает одинаковые блоки */
+  object-position: top;   /* фокус на верхней части */
+  display: block;
+}
+
+/* (опционально) градиент и подписи, если используешь */
+.gallery .cell::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 40%;
+  background: linear-gradient(to top, rgba(0,0,0,.7), transparent);
+}
+.gallery .cell .meta {
+  position: absolute;
+  bottom: 8px; left: 12px;
+  color: #fff;
+  z-index: 1;
+}
+
+
+
+
+/* ===== Lightbox (Media Slider) ===== */
+.mlb { 
+  position: fixed; inset: 0; 
+  display: grid; place-items: center; 
+  z-index: 9999; 
+}
+.mlb[hidden] { display: none; }
+.mlb[aria-hidden="true"] { display: none; }
+
+.mlb-backdrop {
+  position: absolute; inset: 0;
+  background: rgba(59, 43, 32, 0.96); /* глубокий тёмно-коричневый */
+  backdrop-filter: blur(2px) brightness(0.9); /* мягкость и киношность */
+}
+
+.mlb-stage {
+  position: relative;
+  max-width: min(96vw, 1400px);
+  max-height: 86vh;
+  width: 96vw;
+  height: auto;
+  display: grid;
+  place-items: center;
+  z-index: 2;
+}
+
+.mlb-stage img, .mlb-stage video {
+  max-width: 100%;
+  max-height: 86vh;
+  display: block;
   border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-  transition: transform 0.3s ease;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.4);
 }
 
-.category-card:hover {
-  transform: translateY(-5px);
+.mlb-bottom {
+  position: absolute;
+  bottom: 20px; left: 50%;
+  transform: translateX(-50%);
+  width: min(96vw, 1400px);
+  display: flex; justify-content: space-between; align-items: center;
+  gap: 12px; color: #fff; z-index: 2;
+  font: 400 14px/1.4 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
 }
 
-.card-image {
-  width: 100%;
-  height: 200px;
-  background-size: cover;
-  background-position: center;
-  position: relative;
-  filter: brightness(0.7); /* затемнение по умолчанию */
-  transition: filter 0.3s ease;
+.mlb-caption { opacity: 0.9; max-width: 70%; }
+.mlb-counter { opacity: 0.8; }
+
+/* Базовый стиль кнопок lightbox */
+.mlb-btn {
+  position: absolute;
+  z-index: 3;
+  background: rgba(166, 126, 90, 0.4);    /* полупрозрачный бежевый фон */
+  border: 1px solid #a67e5a;              /* беж обводка */
+  color: #a67e5a;                         /* сама стрелка бежевого цвета */
+  border-radius: 12px;
+  width: 44px; height: 44px;
+  display: grid; place-items: center;
+  cursor: pointer;
+  transition: background .2s ease, color .2s ease, border-color .2s ease;
 }
 
-.category-card:hover .card-image {
-  filter: brightness(1); /* убираем затемнение при наведении */
+/* Ховер — только смена цветов, без scale */
+.mlb-btn:hover {
+  background: rgba(166, 126, 90, 0.8);    /* насыщенный фон */
+  border-color: #3B2B20;                  /* обводка коричневая */
+  color: #3B2B20;                         /* стрелка коричневая */
 }
 
-.card-title {
-  text-align: center;
-  font-size: 1.2rem;
-  padding: 10px;
-  background: #fff;
-}
-.card-image {
-  width: 100%;
-  height: 200px;
-  background-size: cover;
-  background-position: center;
-  position: relative;
-  filter: brightness(0.7);
-  transition: filter 0.3s ease;
+
+.mlb-prev { left: 20px; top: 50%; transform: translateY(-50%); }
+.mlb-next { right: 20px; top: 50%; transform: translateY(-50%); }
+.mlb-close { top: 14px; right: 14px; }
+
+body.mlb-open { overflow: hidden; }
+
+@media (max-width: 640px) {
+  .mlb-btn { width: 40px; height: 40px; border-radius: 10px; }
+  .mlb-bottom { bottom: 14px; font-size: 13px; }
+  .mlb-caption { max-width: 64%; }
 }
 
-.category-card:hover .card-image {
-  filter: brightness(1);
-}
-.card-image {
-  background-size: cover;
-  background-position: center;
-  height: 200px;
-  position: relative;
-  transition: filter 0.3s ease;
+/* Кнопка закрытия Lightbox */
+.mlb-close {
+  color: #fff;             /* белая иконка */
+  background: transparent; /* без заливки */
+  border: none;            /* без обводки */
 }
 
-.card-image.darken {
-  filter: brightness(0.6);
+.mlb-close:hover {
+  color: #a67e5a;          /* бежевый при наведении */
+  background: transparent; /* ничего не прыгает */
+  border: none;
 }
 
-.category-card:hover .card-image.darken {
-  filter: brightness(1);
+
+/* STAFF ONLY */
+.admin {
+  padding: 8px 15px;
+  background: #333;
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 0.85rem;
+  transition: background 0.3s;
+}
+
+.admin:hover {
+  color: rgba(166, 126, 90, 1.0);
+  background: rgba(166, 126, 90, 0.2);
+  border: 1px solid rgba(166, 126, 90, 1.0);
 }

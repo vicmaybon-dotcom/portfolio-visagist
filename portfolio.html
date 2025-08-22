@@ -12,8 +12,9 @@
 <link rel="stylesheet" href="css/contacts.css?v=3">
 
 <link rel="stylesheet" href="css/footer.css?v=3">
-<link rel="stylesheet" href="css/adminStyles.css?v=3">
+
 <link rel="stylesheet" href="css/responsive.css?v=3">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
 	<link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:ital,wght@0,400..700;1,400..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poiret+One&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Savate:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -132,6 +133,30 @@
 		<a href="office.html" class="admin"  aria-label="admin">STAFF ONLY</a>  
     </div>
 </footer>
+
+<!-- Lightbox / Media Slider -->
+<div id="mediaLightbox" class="mlb" role="dialog" aria-modal="true" aria-hidden="true" hidden>
+    <div class="mlb-backdrop"></div>
+  
+    <button id="mlbClose" class="mlb-btn mlb-close" aria-label="Закрыть">
+      <!-- крестик (SVG) -->
+      <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M18.3 5.7L12 12l6.3 6.3-1.4 1.4L10.6 13.4 4.3 19.7 2.9 18.3 9.2 12 2.9 5.7 4.3 4.3 10.6 10.6 16.9 4.3z" fill="currentColor"/></svg>
+    </button>
+  
+    <button id="mlbPrev" class="mlb-btn mlb-prev" aria-label="Предыдущий слайд">
+      <svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true"><path d="M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z" fill="currentColor"/></svg>
+    </button>
+  
+    <button id="mlbNext" class="mlb-btn mlb-next" aria-label="Следующий слайд">
+      <svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.59 16.59 10 18l6-6-6-6-1.41 1.41L13.17 12z" fill="currentColor"/></svg>
+    </button>
+  
+    <div class="mlb-stage" id="mlbStage" aria-live="polite"></div>
+    <div class="mlb-bottom">
+      <div class="mlb-caption" id="mlbCaption"></div>
+      <div class="mlb-counter" id="mlbCounter"></div>
+    </div>
+  </div>
 
 <script src="js/header-portfolio.js"></script>
 <script src="js/portfolio.js"></script>
