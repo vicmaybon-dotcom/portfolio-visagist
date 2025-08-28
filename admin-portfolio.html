@@ -8,8 +8,11 @@
 <link rel="stylesheet" href="css/globals.css?v=3">	
 	<link rel="stylesheet" href="css/base.css?v=3">
 	<link rel="stylesheet" href="css/header-admin-portfolio.css?v=3">
-	<link rel="stylesheet" href="css/admin-portfolio-styles.css?v=3">
-  <link rel="stylesheet" href="css/admin-shell.css?v=3">
+  
+  <link rel="stylesheet" href="/css/admin-portfolio-desktop.css">
+  <link rel="stylesheet" href="/css/admin-portfolio-tablet.css" media="(max-width: 992px)">
+
+  <link rel="stylesheet" href="/css/admin-portfolio-mobile.css" media="(max-width: 600px)">
 
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,68 +22,101 @@
 
 </head>
 <body class="hero-page">
-    <header id="header">
-	<h1 class="hero-title">FANTASY</h1>
-	<button class="nav-toggle" aria-label="Open menu">
+
+<!-- Модальное окно для входа с паролем -->
+<!--<div id="loginModal" class="modal">
+
+  <div class="modal-content">
+    <h2>Вход для персонала</h2>
+
+    <div class="password-wrapper">
+      <input type="password" id="passwordInput" placeholder="Введите пароль" />
+      <button type="button" id="togglePassword" aria-label="Показать пароль">
+      <i class="fa-solid fa-eye"></i>
+      </button>
+    </div>
+    
+    <div class="modal-actions">
+      <button id="loginBtn">Войти</button>
+      <button id="cancelBtn">Отмена</button>
+    </div>
+
+    <div id="loginError" class="error"></div>
+
+  </div>-->
+
+</div>
+
+<header id="header">
+
+	    <h1 class="hero-title">FANTASY</h1>
+	    <button class="nav-toggle" aria-label="Open menu">
         <span class="dot"></span>
         <span class="dot"></span>
         <span class="dot"></span>
-    </button>
+      </button>
+
         <nav aria-label="Main navigation">
             
             <ul class="menu-main-horizontal">
-			<li class="active-link"><a href="index.html">Главная</a></li>
+			          <li class="active-link"><a href="index.html">Главная</a></li>
                 <li><a href="portfolio.html">Портфолио</a></li>
                 <li><a href="services.html">Услуги</a></li>
                 <li><a href="#about">О нас</a></li>
                 <li><a href="#contacts">Контакты</a></li>
             </ul>
         </nav>
-    </header>
+
+</header>
 
 <main class="admin-body">	
    <!-- Левая колонка -->
-  <aside class="admin-explorer">
-    <h2>Панель управления</h2>
+   <aside class="admin-explorer">
+    <div class="admin-header">
+      <h2>Панель управления</h2>
+    </div>
     <p class="admin-hint">
       ⚠️ Перед созданием папки или файла убедитесь, что в правой области открыт нужный раздел.
     </p>
     <div class="admin-ops">
-      <div class="row">
-        <input id="mkdirName" placeholder="Название папки" />
-        <button id="btnMkdir" class="ok">Создать папку</button>
-      </div>
-      <div class="row">
-        <input type="file" id="fileInput" />
+      <fieldset class="op-block">
+        <legend class="op-title">Создание нового элемента</legend>
+        <div class="row">
+          <input id="mkdirName" class="admin-input" placeholder="Введите имя папки" />
+          <button id="btnMkdir" class="ok">Создать папку</button>
+        </div>
+        <div class="row">
+          <input type="file" id="fileInput" class="admin-input" />
         <button id="btnUpload" class="ok">Загрузить</button>
-      </div>
-      <div class="row">
-        <select id="renameType">
-          <option value="file">Файл</option>
-          <option value="folder">Папка</option>
-        </select>
-        <input id="renameOld" placeholder="Старое имя" />
-        <input id="renameNew" placeholder="Новое имя" />
-        <button id="btnRename">Переименовать</button>
-      </div>
-      <div class="row">
-        <select id="deleteType">
-          <option value="file">Файл</option>
-          <option value="folder">Папка</option>
-        </select>
-        <input id="deleteName" placeholder="Имя для удаления" />
-        <button id="btnDelete">Удалить</button>
-      </div>
-      <div class="row">
-       <!-- <button id="btnRefresh">Обновить список</button>-->
-        <button id="btnRebuild" class="save">Сохранить изменения</button>
-      </div>
-      <div class="row">
-        <button id="logoutBtn" class="danger">Выйти</button>
-      </div>
+        </div>
+        
+      </fieldset>
+      <fieldset class="op-block">
+        <legend class="op-title">Переименование элемента</legend>
+        <div class="row">
+          <input id="renameOld" class="admin-input" placeholder="Старое имя папки/файла" />
+        </div>
+        <div class="row">
+          <input id="renameNew" class="admin-input" placeholder="Новое имя папки/файла" />
+        </div>
+        <div class="row">
+          <button id="btnRename">Переименовать</button>
+        </div>
+      </fieldset>
+      <fieldset class="op-block">
+        <legend class="op-title">Удаление элемента</legend>
+        <div class="row">
+          <input id="deleteName" class="admin-input" placeholder="Введите имя папки/файла" />
+        </div>
+        <div class="row">
+          <button id="btnDelete">Удалить</button>
+          <button id="btnRestore">Восстановить</button>
+        </div>
+      </fieldset>
     </div>
-    
   </aside>
+
+  
     <!-- Правая колонка -->
   <section class="admin-preview">
     <div class="sticky-header">
@@ -89,38 +125,39 @@
     <!-- Хлебные крошки -->
     <nav id="breadcrumbs" class="breadcrumbs"></nav>
   </div>
-  <!-- Встроенный просмотрщик -->
-<div id="adminViewer" class="admin-viewer is-hidden">
-  <div class="viewer-inner">
-    <img id="viewerImg" alt="" />
-    <video id="viewerVideo" controls playsinline></video>
-  </div>
-</div>
-    <div class="preview-scroll">
-      <section id="portfolio-container" class="portfolio-section">
-       
-          
-            <!-- ВНУТРЕННИЙ СКРОЛЛ -->
-             
-                <div id="categoryList">
-                      <!-- Контент портфолио -->
-                      <div id="content" class="portfolio-grid"></div>
-                </div>
-              
-        
-      </section>
-  </div>
+
+
+<section class="preview-scroll"> <!-- ВНУТРЕННИЙ СКРОЛЛ -->
+      
+
+  <!-- Контент портфолио -->
+    <div id="workspace" class="workspace">
+            <div id="content" class="portfolio-grid"></div>
+            
+            <aside id="previewPane" class="preview-pane" hidden>
+              <div id="previewResizer" class="resizer" aria-hidden="true"></div>
+                      <button id="previewCloseBtn" type="button" aria-label="Закрыть">×</button>
+                          <div class="preview-body">
+                            <img id="previewImage" alt="" />
+                            <div id="previewError" class="preview-error" hidden>
+                              Не удалось загрузить изображение
+                            </div>
+                          </div>
+            </aside>
+    </div>
+
+      
   </section>
+</section>
 
 </main>
 
 
-<!--<script src="js/header-admin-portfolio.js"></script>
-<script src="js/admin-portfolio-scripts.js"></script>-->
 
-<script src="js/header-admin-portfolio.js"></script>
+<script src="js/admin-portfolio.js"></script> <!-- отрисовывает портфолио без лайтбокса -->
+<script src="js/header-admin-portfolio.js"></script> <!-- отрисовывает хедер с меню навигации по сайту и логотип -->
+<script src="js/admin-actions.js"></script>
+<script src="js/admin-ui.js"></script>
 
-<script src="js/admin-portfolio.js"></script>
-<script src="js/admin-script.js"></script>
 </body>
 </html>

@@ -1,6 +1,6 @@
 // portfolio.js
 const params = new URLSearchParams(window.location.search);
-const path = []; // массив с category, subcategory1, subcategory2...
+const path = [];
 
 if (params.get('category')) path.push(params.get('category'));
 let i = 1;
@@ -13,12 +13,15 @@ while (params.get('subcategory' + i)) {
 fetch('data/portfolio.json')
   .then(res => res.json())
   .then(data => {
-    let currentData = data;
-    path.forEach(key => {
-      if (currentData && typeof currentData === 'object') {
-        currentData = currentData[key];
-      }
-    });
+    // Ищем в дереве папку по path
+    let currentNode = { children: data };
+    for (const segment of path) {
+      const next = currentNode.children?.find(
+        item => item.type === "folder" && item.name === segment
+      );
+      if (!next) { currentNode = null; break; }
+      currentNode = next;
+    }
 
     // Заголовок
     const pageTitle = document.getElementById('pageTitle');
@@ -29,26 +32,35 @@ fetch('data/portfolio.json')
     if (path.length) {
       let bcLink = `portfolio.html`;
       bcContainer.innerHTML = `<a href="${bcLink}">Портфолио</a>`;
-      bcLink = `portfolio.html?category=${encodeURIComponent(path[0])}`;
-      bcContainer.innerHTML += ` <span>›</span> <a href="${bcLink}">${path[0].replace(/_/g, ' ')}</a>`;
-
-      for (let j = 1; j < path.length; j++) {
-        bcLink += `&subcategory${j}=${encodeURIComponent(path[j])}`;
-        const isLast = j === path.length - 1;
-        bcContainer.innerHTML += ` <span>›</span> <a href="${bcLink}"${isLast ? ' class="active"' : ''}>${path[j].replace(/_/g, ' ')}</a>`;
-      }
-      
+      let subLink = '';
+      path.forEach((seg, idx) => {
+        subLink += (idx === 0) 
+          ? `?category=${encodeURIComponent(seg)}`
+          : `&subcategory${idx}=${encodeURIComponent(seg)}`;
+        const isLast = idx === path.length - 1;
+        bcContainer.innerHTML += ` <span>›</span> <a href="portfolio.html${subLink}"${isLast ? ' class="active"' : ''}>${seg.replace(/_/g, ' ')}</a>`;
+      });
     }
 
     const container = document.getElementById('content');
+    container.innerHTML = '';
 
-    if (currentData.__files__ && currentData.__files__.length > 0) {
-      // Галерея
+    if (!currentNode) {
+      container.textContent = "❌ Папка не найдена";
+      return;
+    }
+
+    // === Галерея файлов ===
+    const files = (currentNode.children || []).filter(c => c.type === "file");
+    if (files.length > 0) {
       const gallery = document.createElement('div');
       gallery.className = 'gallery';
-      currentData.__files__.forEach(file => {
+
+      files.forEach(fileNode => {
+        const file = fileNode.name;
         const ext = file.split('.').pop().toLowerCase();
         const filePath = `uploads/${path.join('/')}/${file}`;
+
         if (['jpg', 'jpeg', 'png', 'webp', 'gif'].includes(ext)) {
           const img = document.createElement('img');
           img.src = filePath;
@@ -62,53 +74,52 @@ fetch('data/portfolio.json')
           gallery.appendChild(video);
         }
       });
+
       container.appendChild(gallery);
     }
 
-    // Список карточек категорий / подкатегорий
-    const subcategories = Object.keys(currentData).filter(sub => sub !== '__files__');
-    if (subcategories.length > 0) {
+    // === Подкатегории ===
+    const subs = (currentNode.children || []).filter(c => c.type === "folder");
+    if (subs.length > 0) {
       const list = document.createElement('div');
       list.className = 'category-list';
 
-      subcategories.forEach(sub => {
-        const subPath = [...path, sub];
+      subs.forEach(subNode => {
+        const subPath = [...path, subNode.name];
         let previewFile = '';
-
-        if (currentData[sub].__files__ && currentData[sub].__files__.length > 0) {
-          previewFile = currentData[sub].__files__[0];
-        }
+        const firstFile = (subNode.children || []).find(c => c.type === "file");
+        if (firstFile) previewFile = firstFile.name;
 
         const imgPath = previewFile
           ? `uploads/${subPath.join('/')}/${previewFile}`
           : 'img/no-image.jpg';
 
-        let link = `portfolio.html?category=${encodeURIComponent(path[0] || sub)}`;
+        let link = `portfolio.html?category=${encodeURIComponent(path[0] || subNode.name)}`;
         for (let k = 1; k < path.length; k++) {
           link += `&subcategory${k}=${encodeURIComponent(path[k])}`;
         }
         if (path.length) {
-          link += `&subcategory${path.length}=${encodeURIComponent(sub)}`;
+          link += `&subcategory${path.length}=${encodeURIComponent(subNode.name)}`;
         }
 
         const card = document.createElement('a');
         card.href = link;
         card.className = 'category-card';
 
-        const testImg = new Image();
-        testImg.onload = () => {
+        const t = new Image();
+        t.onload = () => {
           card.innerHTML = `
             <div class="card-image" style="background-image: url('${imgPath}')"></div>
-            <div class="card-title">${sub.replace(/_/g, ' ')}</div>
+            <div class="card-title">${subNode.name.replace(/_/g, ' ')}</div>
           `;
         };
-        testImg.onerror = () => {
+        t.onerror = () => {
           card.innerHTML = `
             <div class="card-image" style="background-image: url('img/no-image.jpg')"></div>
-            <div class="card-title">${sub.replace(/_/g, ' ')}</div>
+            <div class="card-title">${subNode.name.replace(/_/g, ' ')}</div>
           `;
         };
-        testImg.src = imgPath;
+        t.src = imgPath;
 
         list.appendChild(card);
       });
@@ -117,6 +128,7 @@ fetch('data/portfolio.json')
     }
   })
   .catch(err => console.error('Ошибка загрузки JSON:', err));
+
 
   // ===== Media Lightbox =====
 (() => {

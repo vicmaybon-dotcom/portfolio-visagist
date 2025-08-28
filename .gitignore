@@ -8,6 +8,7 @@ yarn-error.log*
 # Logs
 *.log
 
+
 # Environment files
 .env
 
@@ -25,4 +26,13 @@ yarn-error.log*
 .DS_Store
 Thumbs.db
 
+# vscode настройки
+.vscode/
 
+# артефакты сборки (на будущее)
+dist/
+build/
+coverage/
+*.map
+
+office.html

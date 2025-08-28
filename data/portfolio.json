@@ -1,244 +1,911 @@
-{
-  "Portrait": {
-    "Classic_portrait": {
-      "__files__": [
-        "896365469928278410.jpg",
-        "896365469928278411.jpg"
-      ]
-    },
-    "Historical_portrait": {
-      "__files__": [
-        "894149874541436448.jpg",
-        "894149874541436449.jpg",
-        "894150279342064226.jpg",
-        "894153217099749574.jpg",
-        "894154332717506631.jpg",
-        "894154332717506632.jpg",
-        "894154848113583871.jpg",
-        "894154848113583872.jpg",
-        "894155367804628686.jpg",
-        "894155367804628687.jpg",
-        "894155918634156019.jpg",
-        "894155918634156020.jpg",
-        "894158139132225245.jpg",
-        "894158139132225246.jpg",
-        "894159741155049800.jpg",
-        "894160389695119563.jpg",
-        "894160389695119564.jpg",
-        "894161429077223673.jpg",
-        "894161429077223674.jpg",
-        "894165328907485304.jpg",
-        "894165328907485305.jpg",
-        "894165980668789959.jpg",
-        "894165980668789960.jpg",
-        "894166429492902863.jpg",
-        "894166429492902864.jpg",
-        "894166711886976123.jpg",
-        "894167083401640402.jpg",
-        "894167083401640403.jpg",
-        "894167699729469383.jpg",
-        "894167699729469384.jpg",
-        "894167987492287446.jpg",
-        "894167987492287447.jpg",
-        "894168447053728898.jpg",
-        "894168447053728899.jpg",
-        "894171826119301376.jpg",
-        "894171826119301377.jpg",
-        "894173575244699782.jpg",
-        "894173575244699783.jpg",
-        "894173652554111882.jpg",
-        "894173652554111883.jpg",
-        "894191170652011989.jpg",
-        "894191170652011990.jpg",
-        "894234047310489035.jpg",
-        "894234118177448840.jpg",
-        "894234118177448841.jpg",
-        "894239261400813359.jpg",
-        "894239261400813360.jpg",
-        "894241430359308596.jpg",
-        "894241430359308597.jpg",
-        "894241831938737317.jpg",
-        "894241831938737318.jpg",
-        "894243655152311110.jpg",
-        "894243755010310113.jpg",
-        "894243755010310114.jpg",
-        "894255281628777544.jpg",
-        "894255281628777545.jpg",
-        "894258006785589000.jpg",
-        "894258006785589001.jpg",
-        "894258107717274497.jpg",
-        "894258107717274498.jpg",
-        "894260384049954400.jpg",
-        "894260384049954401.jpg",
-        "anfas.jpeg",
-        "anfas.jpg",
-        "at front.jpg",
-        "atfront.jpeg",
-        "cleopatra-makeup.jpg",
-        "edo3.jpg",
-        "girl-model-close-up-cleopatra-makeup-ancient-egyptian-hairstyle-masterpiece-contrast-sharp-de.jpg",
-        "image.jpg",
-        "other face.jpg",
-        "otherface.jpeg",
-        "rococo.jpg",
-        "rococo2.jpg",
-        "rococo3.jpg",
-        "rococo5.jpg"
-      ]
-    },
-    "__files__": [
-      "894166429492902863.jpg"
+[
+  {
+    "type": "folder",
+    "name": "Portrait",
+    "path": "Portrait",
+    "children": [
+      {
+        "type": "file",
+        "name": "894166429492902863.jpg",
+        "path": "Portrait/894166429492902863.jpg"
+      },
+      {
+        "type": "folder",
+        "name": "Classic_portrait",
+        "path": "Portrait/Classic_portrait",
+        "children": [
+          {
+            "type": "file",
+            "name": "896365469928278410.jpg",
+            "path": "Portrait/Classic_portrait/896365469928278410.jpg"
+          },
+          {
+            "type": "file",
+            "name": "896365469928278411.jpg",
+            "path": "Portrait/Classic_portrait/896365469928278411.jpg"
+          },
+          {
+            "type": "file",
+            "name": "eyes.jpg",
+            "path": "Portrait/Classic_portrait/eyes.jpg"
+          }
+        ]
+      },
+      {
+        "type": "folder",
+        "name": "Historical_portrait",
+        "path": "Portrait/Historical_portrait",
+        "children": [
+          {
+            "type": "file",
+            "name": "894149874541436448.jpg",
+            "path": "Portrait/Historical_portrait/894149874541436448.jpg"
+          },
+          {
+            "type": "file",
+            "name": "894149874541436449.jpg",
+            "path": "Portrait/Historical_portrait/894149874541436449.jpg"
+          },
+          {
+            "type": "file",
+            "name": "894150279342064226.jpg",
+            "path": "Portrait/Historical_portrait/894150279342064226.jpg"
+          },
+          {
+            "type": "file",
+            "name": "894153217099749574.jpg",
+            "path": "Portrait/Historical_portrait/894153217099749574.jpg"
+          },
+          {
+            "type": "file",
+            "name": "894154332717506631.jpg",
+            "path": "Portrait/Historical_portrait/894154332717506631.jpg"
+          },
+          {
+            "type": "file",
+            "name": "894154332717506632.jpg",
+            "path": "Portrait/Historical_portrait/894154332717506632.jpg"
+          },
+          {
+            "type": "file",
+            "name": "894154848113583871.jpg",
+            "path": "Portrait/Historical_portrait/894154848113583871.jpg"
+          },
+          {
+            "type": "file",
+            "name": "894154848113583872.jpg",
+            "path": "Portrait/Historical_portrait/894154848113583872.jpg"
+          },
+          {
+            "type": "file",
+            "name": "894155367804628686.jpg",
+            "path": "Portrait/Historical_portrait/894155367804628686.jpg"
+          },
+          {
+            "type": "file",
+            "name": "894155367804628687.jpg",
+            "path": "Portrait/Historical_portrait/894155367804628687.jpg"
+          },
+          {
+            "type": "file",
+            "name": "894155918634156019.jpg",
+            "path": "Portrait/Historical_portrait/894155918634156019.jpg"
+          },
+          {
+            "type": "file",
+            "name": "894155918634156020.jpg",
+            "path": "Portrait/Historical_portrait/894155918634156020.jpg"
+          },
+          {
+            "type": "file",
+            "name": "894158139132225245.jpg",
+            "path": "Portrait/Historical_portrait/894158139132225245.jpg"
+          },
+          {
+            "type": "file",
+            "name": "894158139132225246.jpg",
+            "path": "Portrait/Historical_portrait/894158139132225246.jpg"
+          },
+          {
+            "type": "file",
+            "name": "894159741155049800.jpg",
+            "path": "Portrait/Historical_portrait/894159741155049800.jpg"
+          },
+          {
+            "type": "file",
+            "name": "894160389695119563.jpg",
+            "path": "Portrait/Historical_portrait/894160389695119563.jpg"
+          },
+          {
+            "type": "file",
+            "name": "894160389695119564.jpg",
+            "path": "Portrait/Historical_portrait/894160389695119564.jpg"
+          },
+          {
+            "type": "file",
+            "name": "894161429077223673.jpg",
+            "path": "Portrait/Historical_portrait/894161429077223673.jpg"
+          },
+          {
+            "type": "file",
+            "name": "894161429077223674.jpg",
+            "path": "Portrait/Historical_portrait/894161429077223674.jpg"
+          },
+          {
+            "type": "file",
+            "name": "894165328907485304.jpg",
+            "path": "Portrait/Historical_portrait/894165328907485304.jpg"
+          },
+          {
+            "type": "file",
+            "name": "894165328907485305.jpg",
+            "path": "Portrait/Historical_portrait/894165328907485305.jpg"
+          },
+          {
+            "type": "file",
+            "name": "894165980668789959.jpg",
+            "path": "Portrait/Historical_portrait/894165980668789959.jpg"
+          },
+          {
+            "type": "file",
+            "name": "894165980668789960.jpg",
+            "path": "Portrait/Historical_portrait/894165980668789960.jpg"
+          },
+          {
+            "type": "file",
+            "name": "894166429492902863.jpg",
+            "path": "Portrait/Historical_portrait/894166429492902863.jpg"
+          },
+          {
+            "type": "file",
+            "name": "894166429492902864.jpg",
+            "path": "Portrait/Historical_portrait/894166429492902864.jpg"
+          },
+          {
+            "type": "file",
+            "name": "894166711886976123.jpg",
+            "path": "Portrait/Historical_portrait/894166711886976123.jpg"
+          },
+          {
+            "type": "file",
+            "name": "894167083401640402.jpg",
+            "path": "Portrait/Historical_portrait/894167083401640402.jpg"
+          },
+          {
+            "type": "file",
+            "name": "894167083401640403.jpg",
+            "path": "Portrait/Historical_portrait/894167083401640403.jpg"
+          },
+          {
+            "type": "file",
+            "name": "894167699729469383.jpg",
+            "path": "Portrait/Historical_portrait/894167699729469383.jpg"
+          },
+          {
+            "type": "file",
+            "name": "894167699729469384.jpg",
+            "path": "Portrait/Historical_portrait/894167699729469384.jpg"
+          },
+          {
+            "type": "file",
+            "name": "894167987492287446.jpg",
+            "path": "Portrait/Historical_portrait/894167987492287446.jpg"
+          },
+          {
+            "type": "file",
+            "name": "894167987492287447.jpg",
+            "path": "Portrait/Historical_portrait/894167987492287447.jpg"
+          },
+          {
+            "type": "file",
+            "name": "894168447053728898.jpg",
+            "path": "Portrait/Historical_portrait/894168447053728898.jpg"
+          },
+          {
+            "type": "file",
+            "name": "894168447053728899.jpg",
+            "path": "Portrait/Historical_portrait/894168447053728899.jpg"
+          },
+          {
+            "type": "file",
+            "name": "894171826119301376.jpg",
+            "path": "Portrait/Historical_portrait/894171826119301376.jpg"
+          },
+          {
+            "type": "file",
+            "name": "894171826119301377.jpg",
+            "path": "Portrait/Historical_portrait/894171826119301377.jpg"
+          },
+          {
+            "type": "file",
+            "name": "894173575244699782.jpg",
+            "path": "Portrait/Historical_portrait/894173575244699782.jpg"
+          },
+          {
+            "type": "file",
+            "name": "894173575244699783.jpg",
+            "path": "Portrait/Historical_portrait/894173575244699783.jpg"
+          },
+          {
+            "type": "file",
+            "name": "894173652554111882.jpg",
+            "path": "Portrait/Historical_portrait/894173652554111882.jpg"
+          },
+          {
+            "type": "file",
+            "name": "894173652554111883.jpg",
+            "path": "Portrait/Historical_portrait/894173652554111883.jpg"
+          },
+          {
+            "type": "file",
+            "name": "894191170652011989.jpg",
+            "path": "Portrait/Historical_portrait/894191170652011989.jpg"
+          },
+          {
+            "type": "file",
+            "name": "894191170652011990.jpg",
+            "path": "Portrait/Historical_portrait/894191170652011990.jpg"
+          },
+          {
+            "type": "file",
+            "name": "894234047310489035.jpg",
+            "path": "Portrait/Historical_portrait/894234047310489035.jpg"
+          },
+          {
+            "type": "file",
+            "name": "894234118177448840.jpg",
+            "path": "Portrait/Historical_portrait/894234118177448840.jpg"
+          },
+          {
+            "type": "file",
+            "name": "894234118177448841.jpg",
+            "path": "Portrait/Historical_portrait/894234118177448841.jpg"
+          },
+          {
+            "type": "file",
+            "name": "894239261400813359.jpg",
+            "path": "Portrait/Historical_portrait/894239261400813359.jpg"
+          },
+          {
+            "type": "file",
+            "name": "894239261400813360.jpg",
+            "path": "Portrait/Historical_portrait/894239261400813360.jpg"
+          },
+          {
+            "type": "file",
+            "name": "894241430359308596.jpg",
+            "path": "Portrait/Historical_portrait/894241430359308596.jpg"
+          },
+          {
+            "type": "file",
+            "name": "894241430359308597.jpg",
+            "path": "Portrait/Historical_portrait/894241430359308597.jpg"
+          },
+          {
+            "type": "file",
+            "name": "894241831938737317.jpg",
+            "path": "Portrait/Historical_portrait/894241831938737317.jpg"
+          },
+          {
+            "type": "file",
+            "name": "894241831938737318.jpg",
+            "path": "Portrait/Historical_portrait/894241831938737318.jpg"
+          },
+          {
+            "type": "file",
+            "name": "894243655152311110.jpg",
+            "path": "Portrait/Historical_portrait/894243655152311110.jpg"
+          },
+          {
+            "type": "file",
+            "name": "894243755010310113.jpg",
+            "path": "Portrait/Historical_portrait/894243755010310113.jpg"
+          },
+          {
+            "type": "file",
+            "name": "894243755010310114.jpg",
+            "path": "Portrait/Historical_portrait/894243755010310114.jpg"
+          },
+          {
+            "type": "file",
+            "name": "894255281628777544.jpg",
+            "path": "Portrait/Historical_portrait/894255281628777544.jpg"
+          },
+          {
+            "type": "file",
+            "name": "894255281628777545.jpg",
+            "path": "Portrait/Historical_portrait/894255281628777545.jpg"
+          },
+          {
+            "type": "file",
+            "name": "894258006785589000.jpg",
+            "path": "Portrait/Historical_portrait/894258006785589000.jpg"
+          },
+          {
+            "type": "file",
+            "name": "894258006785589001.jpg",
+            "path": "Portrait/Historical_portrait/894258006785589001.jpg"
+          },
+          {
+            "type": "file",
+            "name": "894258107717274497.jpg",
+            "path": "Portrait/Historical_portrait/894258107717274497.jpg"
+          },
+          {
+            "type": "file",
+            "name": "894258107717274498.jpg",
+            "path": "Portrait/Historical_portrait/894258107717274498.jpg"
+          },
+          {
+            "type": "file",
+            "name": "894260384049954400.jpg",
+            "path": "Portrait/Historical_portrait/894260384049954400.jpg"
+          },
+          {
+            "type": "file",
+            "name": "894260384049954401.jpg",
+            "path": "Portrait/Historical_portrait/894260384049954401.jpg"
+          },
+          {
+            "type": "file",
+            "name": "anfas.jpg",
+            "path": "Portrait/Historical_portrait/anfas.jpg"
+          },
+          {
+            "type": "file",
+            "name": "atfront.jpeg",
+            "path": "Portrait/Historical_portrait/atfront.jpeg"
+          },
+          {
+            "type": "file",
+            "name": "cleopatra-makeup.jpg",
+            "path": "Portrait/Historical_portrait/cleopatra-makeup.jpg"
+          },
+          {
+            "type": "file",
+            "name": "edo3.jpg",
+            "path": "Portrait/Historical_portrait/edo3.jpg"
+          },
+          {
+            "type": "file",
+            "name": "Gatsby.jpeg",
+            "path": "Portrait/Historical_portrait/Gatsby.jpeg"
+          },
+          {
+            "type": "file",
+            "name": "otherface.jpeg",
+            "path": "Portrait/Historical_portrait/otherface.jpeg"
+          },
+          {
+            "type": "file",
+            "name": "rococo.jpg",
+            "path": "Portrait/Historical_portrait/rococo.jpg"
+          },
+          {
+            "type": "file",
+            "name": "rococo2.jpg",
+            "path": "Portrait/Historical_portrait/rococo2.jpg"
+          },
+          {
+            "type": "file",
+            "name": "rococo3.jpg",
+            "path": "Portrait/Historical_portrait/rococo3.jpg"
+          },
+          {
+            "type": "file",
+            "name": "rococo5.jpg",
+            "path": "Portrait/Historical_portrait/rococo5.jpg"
+          }
+        ]
+      }
     ]
   },
-  "Thematic_photo_sessions": {
-    "FantasyScenes": {
-      "__files__": [
-        "896366244096165520.jpg",
-        "896366244096165521.jpg",
-        "896366338585446545.jpg",
-        "896366338585446546.jpg",
-        "896367051550021186.jpg",
-        "896367051550021187.jpg"
-      ]
-    },
-    "Feel_like_a_movie_hero": {
-      "__files__": [
-        "896365070496316921.jpg",
-        "896365070496316922.jpg",
-        "896365081233783458.jpg"
-      ]
-    },
-    "Historical_scenes": {
-      "China": {
-        "__files__": [
-          "894153858123581416.jpg",
-          "894153858123581417.jpg"
+  {
+    "type": "folder",
+    "name": "Thematic_photo_sessions",
+    "path": "Thematic_photo_sessions",
+    "children": [
+      {
+        "type": "file",
+        "name": "894243655152311110.jpg",
+        "path": "Thematic_photo_sessions/894243655152311110.jpg"
+      },
+      {
+        "type": "folder",
+        "name": "FantasyScenes",
+        "path": "Thematic_photo_sessions/FantasyScenes",
+        "children": [
+          {
+            "type": "file",
+            "name": "896366244096165520.jpg",
+            "path": "Thematic_photo_sessions/FantasyScenes/896366244096165520.jpg"
+          },
+          {
+            "type": "file",
+            "name": "896366244096165521.jpg",
+            "path": "Thematic_photo_sessions/FantasyScenes/896366244096165521.jpg"
+          },
+          {
+            "type": "file",
+            "name": "896366338585446545.jpg",
+            "path": "Thematic_photo_sessions/FantasyScenes/896366338585446545.jpg"
+          },
+          {
+            "type": "file",
+            "name": "896366338585446546.jpg",
+            "path": "Thematic_photo_sessions/FantasyScenes/896366338585446546.jpg"
+          },
+          {
+            "type": "file",
+            "name": "896367051550021186.jpg",
+            "path": "Thematic_photo_sessions/FantasyScenes/896367051550021186.jpg"
+          },
+          {
+            "type": "file",
+            "name": "896367051550021187.jpg",
+            "path": "Thematic_photo_sessions/FantasyScenes/896367051550021187.jpg"
+          }
         ]
       },
-      "Edo": {
-        "__files__": [
-          "894255328873418049.jpg",
-          "894255328873418050.jpg",
-          "894258382595182963.jpg",
-          "894258382595182964.jpg",
-          "894258498559300657.jpg",
-          "894258498559300658.jpg",
-          "894258812091915140.jpg",
-          "894258812091915141.jpg",
-          "894259050462582343.jpg",
-          "894259050462582344.jpg",
-          "894259125624529646.jpg",
-          "894259125624529647.jpg",
-          "894259434862176825.jpg",
-          "894259434862176826.jpg",
-          "894259501434151129.jpg",
-          "894259501434151130.jpg",
-          "894259772017092422.jpg",
-          "894259772017092423.jpg",
-          "894259862211406112.jpg",
-          "894259862211406113.jpg",
-          "894260070517340150.jpg",
-          "894260070517340151.jpg",
-          "894260126351915306.jpg",
-          "894260126351915307.jpg"
+      {
+        "type": "folder",
+        "name": "Feel_like_a_movie_hero",
+        "path": "Thematic_photo_sessions/Feel_like_a_movie_hero",
+        "children": [
+          {
+            "type": "file",
+            "name": "896365070496316921.jpg",
+            "path": "Thematic_photo_sessions/Feel_like_a_movie_hero/896365070496316921.jpg"
+          },
+          {
+            "type": "file",
+            "name": "896365070496316922.jpg",
+            "path": "Thematic_photo_sessions/Feel_like_a_movie_hero/896365070496316922.jpg"
+          },
+          {
+            "type": "file",
+            "name": "896365081233783458.jpg",
+            "path": "Thematic_photo_sessions/Feel_like_a_movie_hero/896365081233783458.jpg"
+          }
         ]
       },
-      "Egipt": {
-        "__files__": [
-          "894167699729469384.jpg"
+      {
+        "type": "folder",
+        "name": "Historical_scenes",
+        "path": "Thematic_photo_sessions/Historical_scenes",
+        "children": [
+          {
+            "type": "file",
+            "name": "894167987492287447.jpg",
+            "path": "Thematic_photo_sessions/Historical_scenes/894167987492287447.jpg"
+          },
+          {
+            "type": "folder",
+            "name": "China",
+            "path": "Thematic_photo_sessions/Historical_scenes/China",
+            "children": [
+              {
+                "type": "file",
+                "name": "894153858123581416.jpg",
+                "path": "Thematic_photo_sessions/Historical_scenes/China/894153858123581416.jpg"
+              },
+              {
+                "type": "file",
+                "name": "894153858123581417.jpg",
+                "path": "Thematic_photo_sessions/Historical_scenes/China/894153858123581417.jpg"
+              }
+            ]
+          },
+          {
+            "type": "folder",
+            "name": "Edo",
+            "path": "Thematic_photo_sessions/Historical_scenes/Edo",
+            "children": [
+              {
+                "type": "file",
+                "name": "894255328873418049.jpg",
+                "path": "Thematic_photo_sessions/Historical_scenes/Edo/894255328873418049.jpg"
+              },
+              {
+                "type": "file",
+                "name": "894255328873418050.jpg",
+                "path": "Thematic_photo_sessions/Historical_scenes/Edo/894255328873418050.jpg"
+              },
+              {
+                "type": "file",
+                "name": "894258382595182963.jpg",
+                "path": "Thematic_photo_sessions/Historical_scenes/Edo/894258382595182963.jpg"
+              },
+              {
+                "type": "file",
+                "name": "894258382595182964.jpg",
+                "path": "Thematic_photo_sessions/Historical_scenes/Edo/894258382595182964.jpg"
+              },
+              {
+                "type": "file",
+                "name": "894258498559300657.jpg",
+                "path": "Thematic_photo_sessions/Historical_scenes/Edo/894258498559300657.jpg"
+              },
+              {
+                "type": "file",
+                "name": "894258498559300658.jpg",
+                "path": "Thematic_photo_sessions/Historical_scenes/Edo/894258498559300658.jpg"
+              },
+              {
+                "type": "file",
+                "name": "894258812091915140.jpg",
+                "path": "Thematic_photo_sessions/Historical_scenes/Edo/894258812091915140.jpg"
+              },
+              {
+                "type": "file",
+                "name": "894258812091915141.jpg",
+                "path": "Thematic_photo_sessions/Historical_scenes/Edo/894258812091915141.jpg"
+              },
+              {
+                "type": "file",
+                "name": "894259050462582343.jpg",
+                "path": "Thematic_photo_sessions/Historical_scenes/Edo/894259050462582343.jpg"
+              },
+              {
+                "type": "file",
+                "name": "894259050462582344.jpg",
+                "path": "Thematic_photo_sessions/Historical_scenes/Edo/894259050462582344.jpg"
+              },
+              {
+                "type": "file",
+                "name": "894259125624529646.jpg",
+                "path": "Thematic_photo_sessions/Historical_scenes/Edo/894259125624529646.jpg"
+              },
+              {
+                "type": "file",
+                "name": "894259125624529647.jpg",
+                "path": "Thematic_photo_sessions/Historical_scenes/Edo/894259125624529647.jpg"
+              },
+              {
+                "type": "file",
+                "name": "894259434862176825.jpg",
+                "path": "Thematic_photo_sessions/Historical_scenes/Edo/894259434862176825.jpg"
+              },
+              {
+                "type": "file",
+                "name": "894259434862176826.jpg",
+                "path": "Thematic_photo_sessions/Historical_scenes/Edo/894259434862176826.jpg"
+              },
+              {
+                "type": "file",
+                "name": "894259501434151129.jpg",
+                "path": "Thematic_photo_sessions/Historical_scenes/Edo/894259501434151129.jpg"
+              },
+              {
+                "type": "file",
+                "name": "894259501434151130.jpg",
+                "path": "Thematic_photo_sessions/Historical_scenes/Edo/894259501434151130.jpg"
+              },
+              {
+                "type": "file",
+                "name": "894259772017092422.jpg",
+                "path": "Thematic_photo_sessions/Historical_scenes/Edo/894259772017092422.jpg"
+              },
+              {
+                "type": "file",
+                "name": "894259772017092423.jpg",
+                "path": "Thematic_photo_sessions/Historical_scenes/Edo/894259772017092423.jpg"
+              },
+              {
+                "type": "file",
+                "name": "894259862211406112.jpg",
+                "path": "Thematic_photo_sessions/Historical_scenes/Edo/894259862211406112.jpg"
+              },
+              {
+                "type": "file",
+                "name": "894259862211406113.jpg",
+                "path": "Thematic_photo_sessions/Historical_scenes/Edo/894259862211406113.jpg"
+              },
+              {
+                "type": "file",
+                "name": "894260070517340150.jpg",
+                "path": "Thematic_photo_sessions/Historical_scenes/Edo/894260070517340150.jpg"
+              },
+              {
+                "type": "file",
+                "name": "894260070517340151.jpg",
+                "path": "Thematic_photo_sessions/Historical_scenes/Edo/894260070517340151.jpg"
+              },
+              {
+                "type": "file",
+                "name": "894260126351915306.jpg",
+                "path": "Thematic_photo_sessions/Historical_scenes/Edo/894260126351915306.jpg"
+              },
+              {
+                "type": "file",
+                "name": "894260126351915307.jpg",
+                "path": "Thematic_photo_sessions/Historical_scenes/Edo/894260126351915307.jpg"
+              }
+            ]
+          },
+          {
+            "type": "folder",
+            "name": "Egipt",
+            "path": "Thematic_photo_sessions/Historical_scenes/Egipt",
+            "children": [
+              {
+                "type": "file",
+                "name": "894167699729469384.jpg",
+                "path": "Thematic_photo_sessions/Historical_scenes/Egipt/894167699729469384.jpg"
+              },
+              {
+                "type": "file",
+                "name": "eyes.jpg",
+                "path": "Thematic_photo_sessions/Historical_scenes/Egipt/eyes.jpg"
+              }
+            ]
+          },
+          {
+            "type": "folder",
+            "name": "Greece",
+            "path": "Thematic_photo_sessions/Historical_scenes/Greece",
+            "children": [
+              {
+                "type": "file",
+                "name": "894166711886976122.jpg",
+                "path": "Thematic_photo_sessions/Historical_scenes/Greece/894166711886976122.jpg"
+              }
+            ]
+          },
+          {
+            "type": "folder",
+            "name": "Joseon",
+            "path": "Thematic_photo_sessions/Historical_scenes/Joseon",
+            "children": [
+              {
+                "type": "file",
+                "name": "896050274089599169.jpg",
+                "path": "Thematic_photo_sessions/Historical_scenes/Joseon/896050274089599169.jpg"
+              },
+              {
+                "type": "file",
+                "name": "896051541104968047.jpg",
+                "path": "Thematic_photo_sessions/Historical_scenes/Joseon/896051541104968047.jpg"
+              },
+              {
+                "type": "file",
+                "name": "896051541104968048.jpg",
+                "path": "Thematic_photo_sessions/Historical_scenes/Joseon/896051541104968048.jpg"
+              },
+              {
+                "type": "file",
+                "name": "896364232977688687.jpg",
+                "path": "Thematic_photo_sessions/Historical_scenes/Joseon/896364232977688687.jpg"
+              },
+              {
+                "type": "file",
+                "name": "896364232977688688.jpg",
+                "path": "Thematic_photo_sessions/Historical_scenes/Joseon/896364232977688688.jpg"
+              }
+            ]
+          },
+          {
+            "type": "folder",
+            "name": "Rococo",
+            "path": "Thematic_photo_sessions/Historical_scenes/Rococo",
+            "children": [
+              {
+                "type": "file",
+                "name": "894234047310489036.jpg",
+                "path": "Thematic_photo_sessions/Historical_scenes/Rococo/894234047310489036.jpg"
+              },
+              {
+                "type": "file",
+                "name": "894242213117093689.jpg",
+                "path": "Thematic_photo_sessions/Historical_scenes/Rococo/894242213117093689.jpg"
+              },
+              {
+                "type": "file",
+                "name": "894242213117093690.jpg",
+                "path": "Thematic_photo_sessions/Historical_scenes/Rococo/894242213117093690.jpg"
+              },
+              {
+                "type": "file",
+                "name": "roc.jpg",
+                "path": "Thematic_photo_sessions/Historical_scenes/Rococo/roc.jpg"
+              }
+            ]
+          },
+          {
+            "type": "folder",
+            "name": "Rome",
+            "path": "Thematic_photo_sessions/Historical_scenes/Rome",
+            "children": [
+              {
+                "type": "file",
+                "name": "894151674132740800.jpg",
+                "path": "Thematic_photo_sessions/Historical_scenes/Rome/894151674132740800.jpg"
+              },
+              {
+                "type": "file",
+                "name": "894153217099749573.jpg",
+                "path": "Thematic_photo_sessions/Historical_scenes/Rome/894153217099749573.jpg"
+              }
+            ]
+          },
+          {
+            "type": "folder",
+            "name": "Victorian",
+            "path": "Thematic_photo_sessions/Historical_scenes/Victorian",
+            "children": [
+              {
+                "type": "file",
+                "name": "894243655152311110.jpg",
+                "path": "Thematic_photo_sessions/Historical_scenes/Victorian/894243655152311110.jpg"
+              },
+              {
+                "type": "file",
+                "name": "894243755010310113.jpg",
+                "path": "Thematic_photo_sessions/Historical_scenes/Victorian/894243755010310113.jpg"
+              },
+              {
+                "type": "file",
+                "name": "894243755010310114.jpg",
+                "path": "Thematic_photo_sessions/Historical_scenes/Victorian/894243755010310114.jpg"
+              },
+              {
+                "type": "file",
+                "name": "image-5.jpg",
+                "path": "Thematic_photo_sessions/Historical_scenes/Victorian/image-5.jpg"
+              },
+              {
+                "type": "file",
+                "name": "image5.jpg",
+                "path": "Thematic_photo_sessions/Historical_scenes/Victorian/image5.jpg"
+              }
+            ]
+          }
         ]
-      },
-      "Greece": {
-        "__files__": [
-          "894166711886976122.jpg"
-        ]
-      },
-      "Joseon": {
-        "__files__": [
-          "896050274089599169.jpg",
-          "896051541104968047.jpg",
-          "896051541104968048.jpg",
-          "896364232977688687.jpg",
-          "896364232977688688.jpg"
-        ]
-      },
-      "Rococo": {
-        "__files__": [
-          "894234047310489036.jpg",
-          "894242213117093689.jpg",
-          "894242213117093690.jpg",
-          "roc.jpg"
-        ]
-      },
-      "Rome": {
-        "__files__": [
-          "894151674132740800.jpg",
-          "894153217099749573.jpg"
-        ]
-      },
-      "Victorian": {
-        "__files__": [
-          "894243655152311110.jpg",
-          "894243755010310113.jpg",
-          "894243755010310114.jpg",
-          "image-5.jpg"
-        ]
-      },
-      "__files__": [
-        "894167987492287447.jpg"
-      ]
-    },
-    "__files__": [
-      "894243655152311110.jpg"
+      }
     ]
   },
-  "Trailers": {
-    "events": {
-      "__files__": [
-        "896368480700373648.jpg",
-        "896368480700373649.jpg"
-      ]
-    },
-    "movies": {
-      "__files__": [
-        "896368043687471842.jpg",
-        "896368043687471843.jpg"
-      ]
-    },
-    "__files__": [
-      "896367051550021187.jpg"
+  {
+    "type": "folder",
+    "name": "Trailers",
+    "path": "Trailers",
+    "children": [
+      {
+        "type": "file",
+        "name": "896367051550021187.jpg",
+        "path": "Trailers/896367051550021187.jpg"
+      },
+      {
+        "type": "folder",
+        "name": "events",
+        "path": "Trailers/events",
+        "children": [
+          {
+            "type": "file",
+            "name": "896368480700373648.jpg",
+            "path": "Trailers/events/896368480700373648.jpg"
+          },
+          {
+            "type": "file",
+            "name": "896368480700373649.jpg",
+            "path": "Trailers/events/896368480700373649.jpg"
+          }
+        ]
+      },
+      {
+        "type": "folder",
+        "name": "movies",
+        "path": "Trailers/movies",
+        "children": [
+          {
+            "type": "file",
+            "name": "896368043687471842.jpg",
+            "path": "Trailers/movies/896368043687471842.jpg"
+          },
+          {
+            "type": "file",
+            "name": "896368043687471843.jpg",
+            "path": "Trailers/movies/896368043687471843.jpg"
+          }
+        ]
+      }
     ]
   },
-  "Wedding_photo_sessions": {
-    "Historical_wedding_productions": {
-      "__files__": [
-        "895390458665017985.jpg",
-        "895391705279274439.jpg",
-        "895392391400308912.jpg",
-        "895392391400308913.jpg",
-        "895397147002857952.jpg",
-        "895397147002857953.jpg",
-        "895397827755161963.jpg",
-        "895397827755161964.jpg"
-      ]
-    },
-    "Modern_weddings": {
-      "__files__": [
-        "896367591642137316.jpg",
-        "896367591642137317.jpg",
-        "896367661435380511.jpg",
-        "896367661435380512.jpg"
-      ]
-    },
-    "Thematic_wedding_productions": {
-      "__files__": [
-        "895392391400308912.jpg",
-        "895397827755161964.jpg"
-      ]
-    },
-    "__files__": [
-      "895391705279274439.jpg"
+  {
+    "type": "folder",
+    "name": "Wedding_photo_sessions",
+    "path": "Wedding_photo_sessions",
+    "children": [
+      {
+        "type": "folder",
+        "name": "Historical_wedding_productions",
+        "path": "Wedding_photo_sessions/Historical_wedding_productions",
+        "children": [
+          {
+            "type": "file",
+            "name": "895390458665017985.jpg",
+            "path": "Wedding_photo_sessions/Historical_wedding_productions/895390458665017985.jpg"
+          },
+          {
+            "type": "file",
+            "name": "895391705279274439.jpg",
+            "path": "Wedding_photo_sessions/Historical_wedding_productions/895391705279274439.jpg"
+          },
+          {
+            "type": "file",
+            "name": "895392391400308912.jpg",
+            "path": "Wedding_photo_sessions/Historical_wedding_productions/895392391400308912.jpg"
+          },
+          {
+            "type": "file",
+            "name": "895392391400308913.jpg",
+            "path": "Wedding_photo_sessions/Historical_wedding_productions/895392391400308913.jpg"
+          },
+          {
+            "type": "file",
+            "name": "895397147002857952.jpg",
+            "path": "Wedding_photo_sessions/Historical_wedding_productions/895397147002857952.jpg"
+          },
+          {
+            "type": "file",
+            "name": "895397147002857953.jpg",
+            "path": "Wedding_photo_sessions/Historical_wedding_productions/895397147002857953.jpg"
+          },
+          {
+            "type": "file",
+            "name": "895397827755161963.jpg",
+            "path": "Wedding_photo_sessions/Historical_wedding_productions/895397827755161963.jpg"
+          },
+          {
+            "type": "file",
+            "name": "895397827755161964.jpg",
+            "path": "Wedding_photo_sessions/Historical_wedding_productions/895397827755161964.jpg"
+          }
+        ]
+      },
+      {
+        "type": "folder",
+        "name": "Modern_weddings",
+        "path": "Wedding_photo_sessions/Modern_weddings",
+        "children": [
+          {
+            "type": "file",
+            "name": "896367591642137316.jpg",
+            "path": "Wedding_photo_sessions/Modern_weddings/896367591642137316.jpg"
+          },
+          {
+            "type": "file",
+            "name": "896367591642137317.jpg",
+            "path": "Wedding_photo_sessions/Modern_weddings/896367591642137317.jpg"
+          },
+          {
+            "type": "file",
+            "name": "896367661435380511.jpg",
+            "path": "Wedding_photo_sessions/Modern_weddings/896367661435380511.jpg"
+          },
+          {
+            "type": "file",
+            "name": "896367661435380512.jpg",
+            "path": "Wedding_photo_sessions/Modern_weddings/896367661435380512.jpg"
+          }
+        ]
+      },
+      {
+        "type": "file",
+        "name": "other.jpg",
+        "path": "Wedding_photo_sessions/other.jpg"
+      },
+      {
+        "type": "folder",
+        "name": "Thematic_wedding_productions",
+        "path": "Wedding_photo_sessions/Thematic_wedding_productions",
+        "children": [
+          {
+            "type": "file",
+            "name": "895392391400308912.jpg",
+            "path": "Wedding_photo_sessions/Thematic_wedding_productions/895392391400308912.jpg"
+          }
+        ]
+      }
     ]
-  },
-  "__files__": []
-}
+  }
+]

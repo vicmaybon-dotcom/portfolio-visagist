@@ -1,0 +1,11 @@
+/* =========== TABLET (до 992px) =========== */
+
+#content .gallery {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 10px;
+  }
+  
+  .sidebar {
+    flex: 0 0 220px;  /* немного уже, чем на десктопе */
+  }
+  

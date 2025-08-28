@@ -1,0 +1,579 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  /* Добавьте overflow-y: hidden, если не хотите, чтобы body скроллился */
+}
+
+/*=======================================*/
+/* ===== Панель управления (левая панель) ===== */
+/*=======================================*/
+/* ===== Оболочка админки (не трогаем стили портфолио) ===== */
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+  }
+/* Контейнер двух колонок */
+main.admin-body {
+    display: flex;
+    gap: 16px;
+    height: calc(100vh - 80px); /* экран минус шапка, подгони под свой header */
+    overflow: hidden;
+  }
+
+  main.admin-body > aside.admin-explore {
+    flex: 0 0 250px; /* левая колонка фиксированная */
+}
+
+main.admin-body > section {
+    flex: 1; /* правая часть занимает всё оставшееся пространство */
+    min-width: 0; /* важно: убирает "лишнее" поле справа */
+}
+
+  .admin-hint {
+    font-size: 13px;
+    color: #a33;
+    margin: 8px 0 12px;
+    padding: 6px;
+    border-left: 3px solid rgb(231, 16, 16);
+    background: #fff5f5;
+    border-radius: 4px;
+  }
+
+/* Toast notifications */
+.toast {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #333;
+  color: #fff;
+  padding: 12px 18px;
+  border-radius: 8px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.3s, transform 0.3s;
+  font-size: 14px;
+  z-index: 9999;
+}
+.toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+.toast-success { background: #2e7d32; } /* зелёный */
+.toast-error   { background: #c62828; } /* красный */
+.toast-info    { background: #1565c0; } /* синий */
+.toast-warning { background: #ed6c02; } /* оранжевый */
+
+
+.admin-explorer {
+  position: relative; /* чтобы позиционировать кнопку внутри */
+  background-color: #f0e6d8;
+  border-radius: 8px;
+  padding: 10px;
+  box-sizing: border-box;
+  width: 320px; /* Фиксированная ширина */
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+
+/* Заголовок */
+.admin-explorer > h2 {
+    margin: 0 0 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-align: center;
+    background-color: #6d4b38;
+    color: #fff;
+    border-radius: 4px;
+  }
+  fieldset.op-block {
+    
+    color: #8d8b8b;
+    }
+  .op-block legend {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    padding: 0 8px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #8d8b8b;
+    background-color: #f0e6d8; /* Цвет фона легенды должен совпадать с цветом фона панели */
+  }
+  
+  .admin-ops { /* Контейнер для операций ---- ОСТАВИТЬ !!! */
+    display: flex;
+    flex-direction: column;
+    gap: 14px; /* расстояние между блоками */
+  }
+  
+  .admin-ops .row {
+    flex-wrap: wrap;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px; /* Отступ между строками */
+  }
+  
+  /* Стили для полей ввода */
+  .row input {
+    flex-grow: 1; /* Поля занимают все доступное пространство */
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  .admin-input {
+    width: 260px;
+    box-sizing: border-box; /* Это очень важно, чтобы padding не увеличивал ширину */
+  }
+  
+  /* Стили для кнопок */
+  .row button {
+    background-color: #6d4b38;
+    color: #fff;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    white-space: nowrap; /* чтобы текст не переносился */
+  }
+  
+  .row button:hover {
+    background-color: #8c6a56;
+  }
+
+
+.file-info {
+  flex-grow: 1;
+  text-align: right;
+  padding-right: 10px;
+  color: #888;
+  font-size: 14px;
+}
+/*=======================================*/
+/* ---- Модальное окно входа ---- */
+/*=======================================*/
+
+.modal {
+  position: fixed;
+  inset: 0;
+  width: 100%; height: 100%;
+  background: rgba(59, 43, 32, 0.96); /* чуть темнее, чем было */
+  display: none;                /* скрыто по умолчанию */
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  /* легкая матовость (если поддерживается) */
+  backdrop-filter: blur(1px);
+}
+.modal[aria-hidden="true"] { display: none; }
+.modal[aria-hidden="false"], .modal.show { display: flex; }
+
+.modal-content {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  width: 320px;
+  max-width: calc(100% - 32px);
+  text-align: center;
+}
+
+/* Поля ввода в модалке */
+.modal-content input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0 12px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+/* Обёртка поля пароля + глазик */
+.password-wrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+#passwordInput {
+  flex: 1;
+  width: 100%;
+  padding-right: 40px; /* место под глазик */
+}
+#togglePassword {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2em;
+  line-height: 1;
+  color: #333;
+  padding: 0;
+}
+
+/* Кнопка-глазик — отдельный класс, чтобы не наследовала общий стиль кнопок */
+.toggle-password {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2em;
+  line-height: 1;
+  color: #333;
+  padding: 0;
+}
+
+/* Кнопки действий модалки (Войти / Отмена) — стилизуем только их, не глазик */
+.modal-actions { display: flex; gap: 8px; justify-content: center; margin-top: 8px; }
+.modal-actions button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background: #007bff;
+  color: #fff;
+  cursor: pointer;
+}
+.modal-actions button:disabled { opacity: .6; cursor: default; }
+
+/* Сообщения об ошибке */
+.modal-content .error,
+#loginError {
+  color: #d93025;
+  font-size: 0.9rem;
+  margin-top: 10px;
+  min-height: 1.2em; /* чтобы не прыгала верстка */
+}
+
+/* Фокусы — доступность клавиатурой */
+a:focus, button:focus, input:focus, select:focus {
+  outline: 2px solid #a67e5a;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/*========================================================*/
+/* ===== Портфолио: общий контейнер (правая панель) ===== */
+/*========================================================*/
+
+.portfolio-main {
+    background-color: #fff;
+    color: #000;
+    padding-top: 10px; /* с учётом липкого хедера */
+  }
+  .admin-preview {
+    display: flex;
+    flex-direction: column;
+    height: 100%;      /* или 100vh, если на весь экран */
+    min-height: 0;     /* чтобы flex не обрезал вложенный скролл */
+  }
+  /* =========================
+   5. Хедер и хлебные крошки
+   ========================= */
+.admin-preview .sticky-header {
+  position: sticky;
+  top: 0;
+  background: #fff;
+  z-index: 10;
+  padding: 5px 5px;
+  border-bottom: 1px solid #eee;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+  /* Заголовок страницы */
+  .admin-preview .sticky-header .section-title {
+    margin: 0;
+    text-align: center;
+    font-size: 1.4em;
+    font-weight: 600;
+    padding-bottom: 6px;
+  }
+
+  /* ===== Хлебные крошки (только админка) ===== */
+  .breadcrumbs {
+    font-size: 0.9rem;
+    margin: 10px 5px 5px;
+    display: block;
+    color: #a67e5a;
+  }
+  
+  .breadcrumbs a {
+    color: #a67e5a;
+    text-decoration: none;
+  }
+  
+  .breadcrumbs a:hover {
+    text-decoration: underline;
+  }
+  
+  .breadcrumbs a.active {
+    color: #a67e5a;
+    text-decoration: underline;
+  }
+  
+  .breadcrumbs span {
+    margin: 0 6px;
+    color: #888; /* разделитель › */
+  }
+
+/* =========================
+   5. Хедер и хлебные крошки
+   ========================= */
+.admin-preview .sticky-header {
+  position: sticky;
+  top: 0;
+  background: #fff;
+  z-index: 10;
+  padding: 5px 5px;
+  border-bottom: 1px solid #eee;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+  /* =========================
+   1. Общий контейнер контента
+   ========================= */
+
+/* Прокручиваемая зона с категориями и файлами */
+.preview-scroll {
+  height: 100%;
+  flex: 1;               /* занимает доступное место */
+  overflow-y: auto;             /* вертикальная прокрутка */
+  max-height: calc(100vh - 60px); /* ограничиваем по высоте окна, учитывая хедер */
+  padding: 10px;
+  box-sizing: border-box;
+  min-height: 0;      /* ВАЖНО! чтобы flex не обрезал контент */
+}
+
+#content {
+  flex:1 1 auto;
+  min-width:240px;       /* не схлопываем */
+  padding: 10px;
+  box-sizing: border-box;
+  
+}
+
+/* =========================
+   2. Сетка категорий и галереи файлов
+   (одинаковая сетка для category-list и gallery)
+   ========================= */
+#content .category-list,
+#content .gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 12px;
+  margin-top: 10px;
+  padding: 0;
+}
+
+/* =========================
+   3. Карточка категории (папка)
+   ========================= */
+.category-card {
+  display: block;
+  position: relative;
+  aspect-ratio: 3 / 2;
+  border-radius: 12px;
+  overflow: hidden;
+  text-decoration: none;
+  background: #f3f3f3;
+  box-shadow: 0 1px 6px rgba(0,0,0,.08);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.category-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0,0,0,.12);
+}
+
+/* Заголовок внутри карточки */
+.category-card .card-title {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  padding: 12px 14px;
+  font: 600 16px/1.2 "Roboto Condensed", sans-serif;
+  color: #fff;
+  background: linear-gradient(
+    180deg,
+    rgba(0,0,0,0) 0%,
+    rgba(0,0,0,.45) 60%,
+    rgba(0,0,0,.65) 100%
+  );
+}
+
+/* Фоновое изображение в карточке */
+.category-card .card-image {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  filter: brightness(.88);
+  transition: transform .35s ease, filter .35s ease;
+}
+.category-card:hover .card-image {
+  transform: scale(1.05);
+  filter: brightness(.98);
+}
+
+/* =========================
+   4. Ячейки файлов (файлы в галерее)
+   ========================= */
+#content .cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Превью файлов (картинки/видео) */
+#content .cell > img,
+#content .cell > video {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+/* Подпись под файлами */
+#content .cell .file-caption {
+  font-size: 12px;
+  color: #555;
+  margin-top: 4px;
+  text-align: center;
+  word-break: break-word;
+}
+
+/* Выделение при hover или выбранном элементе */
+#content .cell:hover,
+#content .cell:has(img.selected),
+#content .cell:has(video.selected) {
+  outline: 3px solid #c96;
+  outline-offset: 3px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+
+
+/* =========================
+   6. Область предпросмотра справа
+   ========================= */
+#workspace {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  width: 100%;
+  box-sizing: border-box;
+  height: 100%;
+}
+
+.portfolio-grid {
+  flex: 1;
+  overflow: auto;
+}
+
+/* --- Панель предпросмотра --- */
+#previewPane {
+  flex: 0 0 0;        /* стартовая ширина */
+  min-width: 280px;
+  max-width: 80%;
+  position: relative;     /* для абсолютного ресайзера */
+  border-left: 1px solid #a67e5a;
+  padding: 10px;
+  box-sizing: border-box;
+  overflow-y: auto;
+  background: #fff;
+  display: flex;          /* управляется JS через hidden */
+  flex-direction: column;
+  align-self: flex-start;
+  top: 0;
+  margin: 10px;
+}
+/* --- Ручка-резайзер --- */
+#previewResizer {
+  position: absolute;
+  top: 0;
+  left: -6px;             /* наезжаем на область плиток */
+  width: 5px;            /* удобная зона захвата */
+  height: 100%;
+  cursor: col-resize; /*ew-resize;*/
+  z-index: 20;
+  background: rgba(255,0,0,0.2); /* подсветка для отладки */
+}
+#previewResizer::after {
+  content: "";
+  position: absolute;
+  top: 0; bottom: 0; left: 5px;
+  width: 2px;
+  background: #ddd;
+}
+/* Когда стоит атрибут hidden — панель скрыта */
+.preview-pane[hidden] {
+  display: none !important;
+}
+/* Когда JS его включает */
+.preview-pane.active {
+  flex: 0 0 40%;          /* панель шириной 40% */
+  display: block;
+}
+/* во время перетаскивания */
+#previewPane.resizing {
+  user-select: none;
+  cursor: ew-resize;
+}
+#previewPane.resizing #previewResizer::after {
+  background: #c96;
+}
+
+/* --- Тело предпросмотра --- */
+.preview-body {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: auto;           /* включаем скролл, если что-то не помещается */
+}
+
+/* --- Кнопка закрытия --- */
+#previewCloseBtn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  font-size: 2em;
+  font-weight: bold;
+  color: red;
+  line-height: 24px;
+  z-index: 10;
+}
+#previewCloseBtn:hover {
+  background: none;
+  color: white;
+}
+
+/* --- Картинка в предпросмотре --- */
+#previewImage {
+  width: auto;
+  max-height: 100%;
+  object-fit: contain;
+  display: block;
+  margin: 0;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+/* Контент в предпросмотре: картинка или видео */
+#previewPane img,
+#previewPane video {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;            /* влезает целиком */
+  display: flex;
+  margin: 0 auto;
+}
