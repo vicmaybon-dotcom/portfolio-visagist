@@ -1,11 +1,269 @@
-/* =========== TABLET (до 992px) =========== */
+@media (max-width: 992px) {
+  /* Макет: панель сверху, контент ниже */
+  .admin-body {
+    flex-direction: column;
+    height: auto;
+    overflow: visible;
+  }
 
-#content .gallery {
-    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  .admin-explorer {
+    width: 100%;
+    max-width: none;
+    display: grid;
+    grid-template-columns: auto 1fr;           /* заголовок — авто, хинт — занимает остаток */
+    grid-template-areas:
+      "title hint"
+      "ops   ops";
+    column-gap: 16px;
+    row-gap: 16px;
+    align-items: center;
+  }
+
+  .admin-explorer .admin-header { grid-area: title; margin: 0; }
+  .admin-explorer .admin-hint   { grid-area: hint;  margin: 0; }
+
+  /* чтобы длинный текст выглядел аккуратно */
+  .admin-header h2 {
+    margin: 0;
+    white-space: nowrap;        /* заголовок не переносится */
+    line-height: 1.1;
+  }
+
+  .admin-hint{
+    display: flex;              /* иконка + текст по центру по вертикали */
+    align-items: center;
+    padding: 8px 12px;
+    font-size: 14px;
+    border-left-width: 3px;     /* как и на десктопе */
+  }
+
+  .admin-explorer .admin-ops { grid-area: ops; }
+
+   
+    .admin-ops .row { 
+      display: flex;
+    flex-wrap: wrap;
+    align-items: center;
     gap: 10px;
+    }
+    .admin-ops button {
+      padding: 8px 12px;
+    }
+
+
+/* This container allows the two pairs to sit side-by-side */
+.create-pair-wrapper {
+  display: flex;
+  flex-wrap: wrap; /* Allows wrapping to the next line */
+  gap: 10px;
+}
+
+/* Each pair takes up half the space */
+.create-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1 1 45%; /* A base width of 45% allows two to fit */
+}
+
+/* Inputs and buttons behave as expected inside their items */
+.create-item input {
+  flex: 1 1 auto; /* Input stretches */
+}
+
+.create-item button {
+  flex: 0 0 auto; /* Button size is fixed */
+  white-space: nowrap;
+}
+
+
+
+/* сетка для переименования */
+.rename-group {
+  display: grid;
+  grid-template-columns: 1fr auto auto; /* поле + 2 кнопки */
+    gap: 1rem;
+    align-items: center;
+}
+
+/* поля идут в колонки */
+.rename-group .rename-fields {
+  display: flex;
+    flex-direction: row; /* если вдруг оставишь отдельные div */
+    align-items: center;
+    margin: 0;
+}
+
+/* кнопка тянется на всю ширину */
+.rename-group .rename-action {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 0;
+}
+
+.delete-group {
+  display: grid;
+  grid-template-columns: 1fr auto auto; /* поле + 2 кнопки */
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.delete-group .delete-line {
+  display: contents; /* "растворяем" дивы в гриде */
+}
+
+.delete-group .admin-input {
+  width: 70%;       /* растягиваем поле */
+  min-width: 200px;
+  margin: 0;
+}
+
+
+}
+/* когда ширина становится узкой */
+@media (max-width: 768px) {
+  
+  
+  .rename-group {
+    grid-template-columns: 1fr 1fr; /* остаются только поля в строке */
+    margin: 0;
+  }
+
+  .rename-group .rename-action {
+    grid-column: 1 / 2; /* кнопка переезжает на всю ширину */
+    justify-content: flex-start; /* или flex-start, как тебе нужно */
+    margin: 0;
+  }
+  .delete-group .admin-input {
+    width: 50%;       /* растягиваем поле */
+    min-width: 200px;
+    margin: 0;
+  }
+}
+
+@media (max-width: 740px) {
+
+  
+  .admin-explorer {
+    grid-template-columns: 1fr;        /* только одна колонка */
+    grid-template-areas:
+      "title"
+      "hint"
+      "ops";                           /* сначала заголовок, потом подсказка, потом операции */
+    row-gap: 4px;
+  }
+
+  .admin-header h2 {
+    white-space: normal;               /* заголовок теперь можно переносить */
+    font-size: 18px;                   /* чуть компактнее */
+  }
+
+  .admin-hint {
+    font-size: 13px;                   /* текст подсказки меньше */
+    padding: 6px 10px;
+  }
+
+  fieldset.op-block > legend.accordion-header {
+    all: unset; /* сбросить дефолтные браузерные стили legend */
+    cursor: pointer;
+    display: block;
+   /*width: 100%;*/
+    padding: 2px 10px;
+    /*font-weight: bold;*/
+    background: #ddd4c7; /* твой цвет */
+    color: #2a1a0f;
+    box-sizing: border-box;
+  }
+
+  .admin-ops {
+    display: block;   /* если сетка не нужна */
+    gap: 0;           /* если всё же оставляешь grid/flex */
+    row-gap: 0;
+    column-gap: 0;
   }
   
-  .sidebar {
-    flex: 0 0 220px;  /* немного уже, чем на десктопе */
+  .accordion-header {
+    cursor: pointer;
+    display: block;
+    padding: 4px 6px;
+    font-weight: bold;
+    background: #ddd4c7; /* твой цвет */
+    color: #000;
+    margin: 0;
+    border: none;
+    border-radius: 0;
+    width: 100%;
+    box-sizing: border-box;
   }
   
+  .accordion-content {
+    display: none;
+    padding: 4px 6px;
+    background: #ede4db; /* совпадает с общим фоном aside */
+    border: none;
+    margin: 0;
+  }
+
+  .accordion-content.active {
+    display: block;
+  }
+  .accordion-header.active {
+    background: #f0e6d8; /* твой цвет */
+  }
+  .accordion-item {
+    margin-bottom: 2px; /* чтобы был зазор между секциями */
+  }
+
+  .accordion-content > *:last-child {
+    margin-bottom: 0; /* убираем лишний отступ у последнего элемента */
+  }
+
+  #workspace {
+    flex-direction: column; /* контент сверху, предпросмотр снизу */
+  }
+
+  #previewPane {
+    flex: 0 0 auto;
+    width: 100%;
+    max-width: 100%;
+    min-height: 40%;
+    border-left: none;
+    border-top: 1px solid #a67e5a;
+    margin: 0;
+  }
+
+  /* ручка превращается в горизонтальную сверху */
+  #previewResizer {
+    top: -6px;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    cursor: ns-resize;
+  }
+
+  #previewResizer::after {
+    top: 5px; left: 0; right: 0;
+    height: 2px;
+    width: auto;
+  }
+  .preview-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  #previewImage {
+    max-width: 100%;
+    height: auto;
+    max-height: 70vh; /* чтобы не вылазило за экран */
+  }
+  /* во время перетаскивания */
+  #previewPane.resizing {
+    cursor: ns-resize;
+  }
+  #previewPane.resizing #previewResizer::after {
+    background: #c96;
+  }
+
+}

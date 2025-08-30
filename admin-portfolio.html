@@ -79,40 +79,53 @@
       ⚠️ Перед созданием папки или файла убедитесь, что в правой области открыт нужный раздел.
     </p>
     <div class="admin-ops">
-      <fieldset class="op-block">
-        <legend class="op-title">Создание нового элемента</legend>
-        <div class="row">
-          <input id="mkdirName" class="admin-input" placeholder="Введите имя папки" />
-          <button id="btnMkdir" class="ok">Создать папку</button>
-        </div>
-        <div class="row">
-          <input type="file" id="fileInput" class="admin-input" />
+      <!-- ... -->
+
+<!-- Аккордеон для создания -->
+<div class="accordion-item">
+  <fieldset class="op-block">
+    <legend class="op-title accordion-header">Создать / Загрузить</legend>
+    <div class="accordion-content">
+      <div class="row create-group">
+        <input id="mkdirName" class="admin-input" placeholder="Введите имя папки" />
+        <button id="btnMkdir" class="ok">Создать папку</button>
+        <input type="file" id="fileInput" class="admin-input" />
         <button id="btnUpload" class="ok">Загрузить</button>
-        </div>
-        
-      </fieldset>
-      <fieldset class="op-block">
-        <legend class="op-title">Переименование элемента</legend>
-        <div class="row">
-          <input id="renameOld" class="admin-input" placeholder="Старое имя папки/файла" />
-        </div>
-        <div class="row">
-          <input id="renameNew" class="admin-input" placeholder="Новое имя папки/файла" />
-        </div>
-        <div class="row">
-          <button id="btnRename">Переименовать</button>
-        </div>
-      </fieldset>
-      <fieldset class="op-block">
-        <legend class="op-title">Удаление элемента</legend>
-        <div class="row">
-          <input id="deleteName" class="admin-input" placeholder="Введите имя папки/файла" />
-        </div>
-        <div class="row">
-          <button id="btnDelete">Удалить</button>
-          <button id="btnRestore">Восстановить</button>
-        </div>
-      </fieldset>
+      </div>
+    </div>
+  </fieldset>
+</div>
+
+<!-- Аккордеон для переименования -->
+<div class="accordion-item">
+  <fieldset class="op-block">
+    <legend class="op-title accordion-header">Переименовать</legend>
+    <div class="accordion-content">
+      <div class="row rename-group">
+        <input id="renameOld" class="admin-input" placeholder="Старое имя папки/файла" />
+        <input id="renameNew" class="admin-input" placeholder="Новое имя папки/файла" />
+        <button id="btnRename">Переименовать</button>
+      </div>
+    </div>
+  </fieldset>
+</div>
+
+<!-- Аккордеон для удаления -->
+<div class="accordion-item">
+  <fieldset class="op-block">
+    <legend class="op-title accordion-header">Удалить</legend>
+    <div class="accordion-content">
+      <div class="row delete-group">
+        <input id="deleteName" class="admin-input" placeholder="Введите имя папки/файла" />
+        <button id="btnDelete">Удалить</button>
+        <button id="btnRestore">Восстановить</button>
+      </div>
+    </div>
+  </fieldset>
+</div>
+
+<!-- ... -->
+
     </div>
   </aside>
 
@@ -136,7 +149,7 @@
             
             <aside id="previewPane" class="preview-pane" hidden>
               <div id="previewResizer" class="resizer" aria-hidden="true"></div>
-                      <button id="previewCloseBtn" type="button" aria-label="Закрыть">×</button>
+                      <button id="previewCloseBtn" class="close-btn" type="button" aria-label="Закрыть"></button>
                           <div class="preview-body">
                             <img id="previewImage" alt="" />
                             <div id="previewError" class="preview-error" hidden>
@@ -158,6 +171,7 @@
 <script src="js/header-admin-portfolio.js"></script> <!-- отрисовывает хедер с меню навигации по сайту и логотип -->
 <script src="js/admin-actions.js"></script>
 <script src="js/admin-ui.js"></script>
+<script src="js/accordion-header.js"></script>
 
 </body>
 </html>
