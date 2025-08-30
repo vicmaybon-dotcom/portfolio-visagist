@@ -298,7 +298,11 @@
     padding-bottom: 0;
     
 
-  
+    .gallery.gallery--compact {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      grid-auto-rows: auto; /* строки по размеру контента */
+    }
 }
 
 }
