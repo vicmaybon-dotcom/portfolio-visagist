@@ -144,12 +144,15 @@
 
 @media (max-width: 740px) {
 
-  
+  body {
+
+    line-height: 1.6;
+  }
   .admin-explorer {
     grid-template-columns: 1fr;        /* только одна колонка */
     grid-template-areas:
       "title"
-      "hint"
+      
       "ops";                           /* сначала заголовок, потом подсказка, потом операции */
     row-gap: 4px;
   }
@@ -158,20 +161,27 @@
     white-space: normal;               /* заголовок теперь можно переносить */
     font-size: 18px;                   /* чуть компактнее */
   }
-
+/*
   .admin-hint {
-    font-size: 13px;                   /* текст подсказки меньше */
+    font-size: 13px;       
     padding: 6px 10px;
+  }*/
+  .admin-hint {
+    display: none;
   }
-
+  fieldset.op-block {
+    
+    padding: 2px;
+  }
   fieldset.op-block > legend.accordion-header {
     all: unset; /* сбросить дефолтные браузерные стили legend */
     cursor: pointer;
     display: block;
    /*width: 100%;*/
-    padding: 2px 10px;
+    padding: 1px 6px;
     /*font-weight: bold;*/
-    background: #ddd4c7; /* твой цвет */
+    
+    border-radius: 4px;
     color: #2a1a0f;
     box-sizing: border-box;
   }
@@ -219,9 +229,26 @@
     margin-bottom: 0; /* убираем лишний отступ у последнего элемента */
   }
 
-  #workspace {
-    flex-direction: column; /* контент сверху, предпросмотр снизу */
+
+  .admin-body {
+    gap: 0 !important; /* или даже 0 */
   }
+
+  .breadcrumbs {
+
+    margin: 0 5px 5px;
+    display: block;
+    color: #a67e5a;
+}
+
+  #workspace {
+  
+    flex-direction: column; /* контент сверху, предпросмотр снизу */
+    
+  }
+
+  
+
 
   #previewPane {
     flex: 0 0 auto;
@@ -265,5 +292,13 @@
   #previewPane.resizing #previewResizer::after {
     background: #c96;
   }
+
+  #header {
+    padding-top: 7px;
+    padding-bottom: 0;
+    
+
+  
+}
 
 }
